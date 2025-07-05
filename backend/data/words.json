@@ -1,0 +1,990 @@
+{
+  "abase": {
+    "description": "lower in rank or status; humiliate",
+    "sentence": "The mentor did not abase the student for mistakes, but gently guided her."
+  },
+  "abate": {
+    "description": "become less intense or widespread",
+    "sentence": "As the storm abated, the sea became calm and tranquil."
+  },
+  "abdicate": {
+    "description": "give up a position, right, or power",
+    "sentence": "The king decided to abdicate the throne in favor of his son."
+  },
+  "aberrant": {
+    "description": "deviating from the norm; abnormal",
+    "sentence": "The scientist observed an aberrant result that deviated from the norm."
+  },
+  "acumen": {
+    "description": "the ability to make good judgments and quick decisions",
+    "sentence": "Her business acumen helped the startup rapidly become profitable."
+  },
+  "adroit": {
+    "description": "skillful and adept under pressing conditions",
+    "sentence": "The debater was adroit at countering complex arguments."
+  },
+  "adulation": {
+    "description": "excessive flattery or admiration",
+    "sentence": "Despite the crowd's adulation, the artist remained humble."
+  },
+  "adversity": {
+    "description": "difficulties or misfortune",
+    "sentence": "He learned to remain positive even in the face of adversity."
+  },
+  "affluent": {
+    "description": "having a great deal of money; wealthy",
+    "sentence": "They lived in an affluent neighborhood with large mansions."
+  },
+  "alacrity": {
+    "description": "brisk and cheerful readiness",
+    "sentence": "She accepted the invitation with alacrity, eager to attend."
+  },
+  "alleviate": {
+    "description": "make suffering, deficiency, or a problem less severe",
+    "sentence": "The medicine helped alleviate the pain after surgery."
+  },
+  "amalgamate": {
+    "description": "combine or unite to form one structure",
+    "sentence": "The two companies decided to amalgamate to increase market share."
+  },
+  "ambiguous": {
+    "description": "open to more than one interpretation; unclear",
+    "sentence": "The politician's ambiguous statement left his position unclear."
+  },
+  "anachronism": {
+    "description": "something out of its proper time period",
+    "sentence": "Using a smartphone in a medieval setting is an obvious anachronism."
+  },
+  "anomaly": {
+    "description": "something that deviates from what is standard or expected",
+    "sentence": "The engineer noted an anomaly in the test data that required investigation."
+  },
+  "apathy": {
+    "description": "lack of interest, enthusiasm, or concern",
+    "sentence": "Voter apathy led to a surprisingly low turnout at the polls."
+  },
+  "arcane": {
+    "description": "understood by few; mysterious or secret",
+    "sentence": "The professor's lecture on quantum physics was filled with arcane concepts."
+  },
+  "audacious": {
+    "description": "showing a willingness to take bold risks",
+    "sentence": "The explorer's audacious plan included crossing the uncharted jungle."
+  },
+  "austere": {
+    "description": "severe or strict in manner; without adornment",
+    "sentence": "The monks lived in an austere monastery with few comforts."
+  },
+  "avarice": {
+    "description": "extreme greed for wealth or material gain",
+    "sentence": "His avarice drove him to hoard gold and ignore the needs of others."
+  },
+  "belligerent": {
+    "description": "hostile and aggressive; warlike",
+    "sentence": "Her belligerent attitude made her unpopular among her coworkers."
+  },
+  "benevolence": {
+    "description": "the quality of being kind and generous",
+    "sentence": "Her benevolence was evident when she donated her entire bonus to charity."
+  },
+  "benevolent": {
+    "description": "well meaning and kindly",
+    "sentence": "Her benevolent nature made everyone feel welcome in the community."
+  },
+  "berate": {
+    "description": "scold or criticize angrily",
+    "sentence": "The coach did not hesitate to berate the players for their lack of effort."
+  },
+  "bestow": {
+    "description": "present (an honor or gift)",
+    "sentence": "The award committee decided to bestow the prize on the young scientist."
+  },
+  "bewilder": {
+    "description": "cause (someone) to become perplexed",
+    "sentence": "The complex puzzle began to bewilder even the most experienced players."
+  },
+  "blandish": {
+    "description": "coax with kind words or flattery",
+    "sentence": "He tried to blandish his boss with compliments to earn a promotion."
+  },
+  "boisterous": {
+    "description": "noisy, energetic, and cheerful; rowdy",
+    "sentence": "The children were boisterous as they played in the park."
+  },
+  "cacophony": {
+    "description": "a harsh, discordant mixture of sounds",
+    "sentence": "A cacophony of car horns filled the city street during the rush hour."
+  },
+  "capricious": {
+    "description": "given to sudden behavior changes; impulsive",
+    "sentence": "The weather is so capricious in spring that you must dress in layers."
+  },
+  "catharsis": {
+    "description": "the process of releasing strong emotions, providing relief",
+    "sentence": "Writing in a journal provides a catharsis for his stress."
+  },
+  "cavalier": {
+    "description": "showing a lack of proper concern; offhand",
+    "sentence": "She had a cavalier disregard for the rules, doing as she pleased."
+  },
+  "chaos": {
+    "description": "complete disorder and confusion",
+    "sentence": "After the power outage, the office descended into chaos."
+  },
+  "chauvinist": {
+    "description": "believing in the superiority of one's own group, often nationalistic",
+    "sentence": "His chauvinist attitude alienated many people in the meeting."
+  },
+  "cinematic": {
+    "description": "relating to motion pictures",
+    "sentence": "The director created a cinematic masterpiece that captivated audiences worldwide."
+  },
+  "circumspect": {
+    "description": "wary and unwilling to take risks",
+    "sentence": "She was circumspect about investing, researching each option carefully."
+  },
+  "clandestine": {
+    "description": "kept secret or done secretively",
+    "sentence": "They held a clandestine meeting to plan the surprise party."
+  },
+  "coerce": {
+    "description": "persuade to do something by using force or threats",
+    "sentence": "He tried to coerce his friend into breaking the law, but was refused."
+  },
+  "cogent": {
+    "description": "clear, logical, and convincing",
+    "sentence": "Her cogent argument convinced the panel to approve the project."
+  },
+  "colloquial": {
+    "description": "used in ordinary or familiar conversation",
+    "sentence": "The novel's dialogue felt authentic because of its colloquial tone."
+  },
+  "concur": {
+    "description": "be of the same opinion; agree",
+    "sentence": "Both experts concur that this is the most efficient solution."
+  },
+  "connive": {
+    "description": "secretly allow or conspire to do something immoral or illegal",
+    "sentence": "They were shocked to discover the neighbors connived to steal their idea."
+  },
+  "consensus": {
+    "description": "general agreement among a group",
+    "sentence": "After much debate, a consensus was reached on the proposal."
+  },
+  "construe": {
+    "description": "interpret or understand (a word or action)",
+    "sentence": "It is difficult to construe his silence on the matter."
+  },
+  "conundrum": {
+    "description": "a confusing and difficult problem or question",
+    "sentence": "The riddle posed quite a conundrum that stumped everyone."
+  },
+  "conviction": {
+    "description": "a firmly held belief",
+    "sentence": "Her conviction that justice will prevail inspired everyone around her."
+  },
+  "copious": {
+    "description": "abundant in supply; plentiful",
+    "sentence": "The report was filled with copious data and detailed charts."
+  },
+  "cumulative": {
+    "description": "increasing or increased by successive additions",
+    "sentence": "The cumulative effect of the donations was astounding."
+  },
+  "cursory": {
+    "description": "hasty and therefore not thorough or detailed",
+    "sentence": "He gave the document a cursory glance but signed it without reading."
+  },
+  "dearth": {
+    "description": "a scarcity or lack of something",
+    "sentence": "The region suffered a dearth of clean water during the drought."
+  },
+  "debacle": {
+    "description": "a sudden and ignominious failure; a fiasco",
+    "sentence": "The product launch turned into a debacle when the software crashed."
+  },
+  "debilitate": {
+    "description": "make someone weak and infirm",
+    "sentence": "The illness served to debilitate him, leaving him bedridden."
+  },
+  "decorum": {
+    "description": "behavior in keeping with good taste and propriety",
+    "sentence": "The students were expected to act with decorum during the formal dinner."
+  },
+  "deference": {
+    "description": "humble submission and respect",
+    "sentence": "Out of deference to tradition, they observed the annual ceremonies."
+  },
+  "deleterious": {
+    "description": "causing harm or damage",
+    "sentence": "Smoking can have deleterious effects on your health."
+  },
+  "denounce": {
+    "description": "publicly declare to be wrong or evil",
+    "sentence": "They decided to denounce the corrupt official at the press conference."
+  },
+  "deride": {
+    "description": "express contempt for; ridicule",
+    "sentence": "Bullies often deride those who are different."
+  },
+  "declaim": {
+    "description": "utter or deliver words in a rhetorical or impassioned way",
+    "sentence": "The politician began to declaim against the injustices he witnessed."
+  },
+  "decrepit": {
+    "description": "worn out or ruined because of age or neglect",
+    "sentence": "They lived in a decrepit old mansion on the hill."
+  },
+  "diffident": {
+    "description": "modest or shy because of a lack of self-confidence",
+    "sentence": "The normally diffident student surprised everyone with her eloquent speech."
+  },
+  "diminutive": {
+    "description": "extremely or unusually small",
+    "sentence": "Despite his diminutive stature, he had an imposing presence."
+  },
+  "disdain": {
+    "description": "the feeling that something is unworthy of one's consideration",
+    "sentence": "She looked at the messy desk with disdain."
+  },
+  "disseminate": {
+    "description": "spread or disperse widely",
+    "sentence": "The internet helps disseminate information faster than ever."
+  },
+  "dissent": {
+    "description": "hold or express opinions at variance with the majority",
+    "sentence": "To dissent publicly could have consequences."
+  },
+  "distortion": {
+    "description": "the action of giving a misleading account or impression",
+    "sentence": "He refused to listen to any distortion of the facts."
+  },
+  "dissident": {
+    "description": "a person who opposes official policy",
+    "sentence": "The dissident criticized the government's new regulations."
+  },
+  "dogmatic": {
+    "description": "inclined to lay down principles as incontrovertibly true",
+    "sentence": "He was dogmatic about his views and refused to listen."
+  },
+  "dour": {
+    "description": "sullen; gloomy",
+    "sentence": "His dour expression told me that he had not slept well."
+  },
+  "dubious": {
+    "description": "hesitating or doubting; not to be relied upon",
+    "sentence": "He was dubious about the truth of the rumors."
+  },
+  "durable": {
+    "description": "able to withstand wear, pressure, or damage",
+    "sentence": "She bought a durable pair of boots for the harsh winter."
+  },
+  "eccentric": {
+    "description": "unconventional and slightly strange",
+    "sentence": "The eccentric artist painted bright murals on every wall of her house."
+  },
+  "elated": {
+    "description": "extremely happy and excited",
+    "sentence": "She was elated when she learned she got the scholarship."
+  },
+  "electrify": {
+    "description": "to shock or thrill someone",
+    "sentence": "The guitarist managed to electrify the audience with his solo."
+  },
+  "elicit": {
+    "description": "evoke or draw out (a reaction or response)",
+    "sentence": "The comedian's jokes would often elicit laughter from the crowd."
+  },
+  "embellish": {
+    "description": "make (something) more attractive by adding decorative details",
+    "sentence": "She decided to embellish her speech with a few anecdotes."
+  },
+  "empirical": {
+    "description": "based on observation or experiment",
+    "sentence": "The theory needed empirical evidence before it could be accepted."
+  },
+  "enigmatic": {
+    "description": "mysterious; difficult to understand",
+    "sentence": "His smile was enigmatic, leaving everyone guessing his true feelings."
+  },
+  "ephemeral": {
+    "description": "lasting for a very short time",
+    "sentence": "The beauty of a sunset is ephemeral."
+  },
+  "epiphany": {
+    "description": "a sudden realization or insight",
+    "sentence": "It was an epiphany when he finally understood the solution."
+  },
+  "equanimity": {
+    "description": "mental calmness and composure",
+    "sentence": "Despite the chaos, he maintained his equanimity."
+  },
+  "eradicate": {
+    "description": "destroy completely; put an end to",
+    "sentence": "Efforts were made to eradicate the invasive plant species."
+  },
+  "ethical": {
+    "description": "pertaining to moral principles",
+    "sentence": "She faced an ethical dilemma about telling the truth."
+  },
+  "estranged": {
+    "description": "no longer close or affectionate to someone",
+    "sentence": "The estranged siblings met only once a year."
+  },
+  "eulogy": {
+    "description": "speech that praises someone highly",
+    "sentence": "He delivered a touching eulogy at his grandmother's funeral."
+  },
+  "fervent": {
+    "description": "having or displaying a passionate intensity",
+    "sentence": "She was a fervent advocate for animal rights."
+  },
+  "flagitious": {
+    "description": "criminal; villainous",
+    "sentence": "The serial thief's flagitious acts were well known to the police."
+  },
+  "flagrant": {
+    "description": "conspicuously or obviously offensive",
+    "sentence": "The referee ignored the flagrant foul."
+  },
+  "futile": {
+    "description": "incapable of producing any useful result; pointless",
+    "sentence": "Protesting seemed futile in front of the unyielding judge."
+  },
+  "gaudy": {
+    "description": "extravagantly bright; showy",
+    "sentence": "The decorations were so gaudy that they hurt his eyes."
+  },
+  "genial": {
+    "description": "friendly and cheerful",
+    "sentence": "The genial host greeted each guest with a warm smile."
+  },
+  "gullible": {
+    "description": "easily persuaded to believe something",
+    "sentence": "He was so gullible that any tall tale would convince him."
+  },
+  "gratuitous": {
+    "description": "uncalled for; lacking good reason",
+    "sentence": "The movie had a gratuitous violent scene that many found unnecessary."
+  },
+  "haughty": {
+    "description": "arrogantly superior",
+    "sentence": "She gave a haughty look to the man who had insulted her."
+  },
+  "harried": {
+    "description": "feeling strained by demands; harassed",
+    "sentence": "She seemed harried after juggling work and family."
+  },
+  "hypocritical": {
+    "description": "behaving in a way that suggests high standards not followed",
+    "sentence": "Criticizing others for faults he had himself was clearly hypocritical."
+  },
+  "humane": {
+    "description": "showing compassion or benevolence",
+    "sentence": "The humane treatment of the animals impressed the visitors."
+  },
+  "imbue": {
+    "description": "inspire or permeate with a feeling",
+    "sentence": "The teacher tried to imbue students with a love of reading."
+  },
+  "imbalance": {
+    "description": "lack of proportion or relation between corresponding things",
+    "sentence": "An imbalance in the ecosystem can lead to severe consequences."
+  },
+  "implement": {
+    "description": "put into effect according to a plan or procedure",
+    "sentence": "The school will implement the new policies next semester."
+  },
+  "impromptu": {
+    "description": "done without being planned in advance",
+    "sentence": "She gave an impromptu speech when the main speaker was delayed."
+  },
+  "incisive": {
+    "description": "clear and sharp in expression or thought",
+    "sentence": "His incisive question cut right to the heart of the issue."
+  },
+  "indelible": {
+    "description": "making marks that cannot be erased; memorable",
+    "sentence": "The experience left an indelible mark on her mind."
+  },
+  "inherent": {
+    "description": "existing as a permanent attribute",
+    "sentence": "There is an inherent difficulty in this problem."
+  },
+  "innocuous": {
+    "description": "not harmful or offensive",
+    "sentence": "The comment was innocuous and caused no offense."
+  },
+  "inundate": {
+    "description": "overwhelm with a large amount of something",
+    "sentence": "The office was inundated with calls after the announcement."
+  },
+  "irascible": {
+    "description": "easily angered",
+    "sentence": "The old man was known to be irascible after midnight."
+  },
+  "ire": {
+    "description": "anger; wrath",
+    "sentence": "His unjust treatment earned him the ire of the villagers."
+  },
+  "irreverent": {
+    "description": "showing lack of respect for things taken seriously",
+    "sentence": "His irreverent comments about the ceremony shocked the audience."
+  },
+  "irate": {
+    "description": "extremely angry",
+    "sentence": "He wrote an irate letter to the editor about the recent policy change."
+  },
+  "joviality": {
+    "description": "cheerful and friendly mood",
+    "sentence": "The joviality of the party was infectious."
+  },
+  "judicious": {
+    "description": "showing or done with good judgment or sense",
+    "sentence": "Her judicious advice helped me solve the difficult problem."
+  },
+  "kinetic": {
+    "description": "relating to or resulting from motion",
+    "sentence": "The exhibit showcased kinetic sculptures that moved with the wind."
+  },
+  "kindle": {
+    "description": "arouse or inspire",
+    "sentence": "The teacher hoped to kindle a love of science in her students."
+  },
+  "keen": {
+    "description": "having or showing eagerness or enthusiasm",
+    "sentence": "She had a keen interest in learning foreign languages."
+  },
+  "layman": {
+    "description": "a non-expert in a field",
+    "sentence": "He explained the scientific concept in layman's terms."
+  },
+  "lexicon": {
+    "description": "vocabulary of a person or language",
+    "sentence": "She had a rich lexicon of culinary terms."
+  },
+  "lucid": {
+    "description": "clear; easy to understand",
+    "sentence": "He gave a lucid explanation of the complex theory."
+  },
+  "magnanimous": {
+    "description": "generous or forgiving, especially toward a rival",
+    "sentence": "She was magnanimous in victory, praising her opponent's effort."
+  },
+  "magnate": {
+    "description": "a wealthy and influential person in business",
+    "sentence": "The real estate magnate built an empire in just a decade."
+  },
+  "malevolent": {
+    "description": "having a wish to do evil to others",
+    "sentence": "His malevolent glare sent shivers down their spines."
+  },
+  "malleable": {
+    "description": "easily influenced; pliable",
+    "sentence": "Gold is a malleable metal that can be shaped easily."
+  },
+  "marred": {
+    "description": "spoiled or damaged",
+    "sentence": "The once beautiful painting was marred by years of neglect."
+  },
+  "meager": {
+    "description": "lacking in quantity or quality",
+    "sentence": "They survived on a meager diet during the winter."
+  },
+  "mediocre": {
+    "description": "of only average quality; not very good",
+    "sentence": "The movie received only mediocre reviews from critics."
+  },
+  "metamorphosis": {
+    "description": "a transformation or dramatic change",
+    "sentence": "The caterpillar's metamorphosis into a butterfly amazed the children."
+  },
+  "modernize": {
+    "description": "adapt to modern needs or habits",
+    "sentence": "The museum decided to modernize its exhibits with interactive displays."
+  },
+  "mollify": {
+    "description": "make less angry or severe; soothe",
+    "sentence": "She tried to mollify the irate customer with a free coupon."
+  },
+  "magnitude": {
+    "description": "great size or extent",
+    "sentence": "The magnitude of the earthquake was measured at 7.2."
+  },
+  "manifest": {
+    "description": "clear or obvious",
+    "sentence": "The joy on her face was manifest when she won."
+  },
+  "mundane": {
+    "description": "lacking interest or excitement; dull",
+    "sentence": "He performed the mundane task of filing papers."
+  },
+  "naive": {
+    "description": "showing lack of experience or judgment",
+    "sentence": "He was naive to believe everything he heard."
+  },
+  "negligent": {
+    "description": "failing to take proper care in doing something",
+    "sentence": "The negligent driver did not notice the pedestrian."
+  },
+  "notorious": {
+    "description": "famous for something bad",
+    "sentence": "The outlaw was notorious across the frontier."
+  },
+  "novelty": {
+    "description": "the quality of being new or original",
+    "sentence": "The novelty of virtual reality technology intrigued him."
+  },
+  "oblivious": {
+    "description": "unaware of or paying no attention to someone or something",
+    "sentence": "She was oblivious to the fact that everyone was staring at her."
+  },
+  "obsolete": {
+    "description": "out of date; no longer used",
+    "sentence": "Typewriters became obsolete after computers gained popularity."
+  },
+  "ominous": {
+    "description": "giving the impression that something bad is about to happen",
+    "sentence": "The dark clouds looked ominous above the city."
+  },
+  "onerous": {
+    "description": "involving great effort and difficulty",
+    "sentence": "Filling out the paperwork was an onerous task."
+  },
+  "outrageous": {
+    "description": "shockingly bad or excessive",
+    "sentence": "It was outrageous how much he demanded for the simple job."
+  },
+  "outright": {
+    "description": "completely; directly",
+    "sentence": "She was the outright winner of the competition."
+  },
+  "paradox": {
+    "description": "a statement that contradicts itself but may be true",
+    "sentence": "It is a paradox that standing is more tiring than walking."
+  },
+  "parsimonious": {
+    "description": "unwilling to spend money; stingy",
+    "sentence": "The parsimonious manager refused to spend on new equipment."
+  },
+  "paucity": {
+    "description": "scarcity; smallness in quantity",
+    "sentence": "The paucity of evidence made the case difficult to solve."
+  },
+  "pedantic": {
+    "description": "overly concerned with minor details",
+    "sentence": "His pedantic remarks annoyed the rest of the class."
+  },
+  "peripheral": {
+    "description": "on the edge; not of central importance",
+    "sentence": "The incident was peripheral to the main issue."
+  },
+  "pernicious": {
+    "description": "having a harmful effect; deadly",
+    "sentence": "The pernicious weed spread throughout the farmland."
+  },
+  "perpetuate": {
+    "description": "make something continue indefinitely",
+    "sentence": "Spreading rumors will only perpetuate misunderstandings."
+  },
+  "phantom": {
+    "description": "something that seems real but is not; ghost",
+    "sentence": "He chased phantom fears about the future."
+  },
+  "philanthropy": {
+    "description": "the desire to promote the welfare of others",
+    "sentence": "She engaged in philanthropy by building schools in impoverished areas."
+  },
+  "phenomenon": {
+    "description": "an observable fact or event",
+    "sentence": "Auroras are a natural phenomenon seen in polar regions."
+  },
+  "pious": {
+    "description": "deeply religious or virtuous",
+    "sentence": "Her pious devotion led her to volunteer at the church."
+  },
+  "placid": {
+    "description": "calm and peaceful",
+    "sentence": "The lake was placid in the early morning light."
+  },
+  "plausible": {
+    "description": "seeming reasonable; believable",
+    "sentence": "Her explanation was plausible, so they believed her story."
+  },
+  "plethora": {
+    "description": "an excess of something",
+    "sentence": "There was a plethora of ideas during the brainstorming session."
+  },
+  "plight": {
+    "description": "a difficult or dangerous situation",
+    "sentence": "They were rescued from their plight by kind neighbors."
+  },
+  "plagiarize": {
+    "description": "copy and pass off someone else's work as one's own",
+    "sentence": "Students are warned not to plagiarize assignments."
+  },
+  "precocious": {
+    "description": "developing abilities at an earlier age than usual",
+    "sentence": "The precocious child could read by age three."
+  },
+  "predicament": {
+    "description": "a difficult or unpleasant situation",
+    "sentence": "Losing his job put him in a financial predicament."
+  },
+  "preclude": {
+    "description": "prevent from happening; make impossible",
+    "sentence": "Poor planning may preclude success."
+  },
+  "procrastinate": {
+    "description": "delay or postpone action",
+    "sentence": "He would procrastinate on homework until the last minute."
+  },
+  "proliferate": {
+    "description": "increase rapidly in numbers; multiply",
+    "sentence": "Social media platforms continue to proliferate around the world."
+  },
+  "prosaic": {
+    "description": "commonplace; unromantic",
+    "sentence": "The report was filled with prosaic details that bored the readers."
+  },
+  "prosaically": {
+    "description": "in a straightforward or matter-of-fact manner",
+    "sentence": "He prosaically listed the items he needed for the project."
+  },
+  "protagonist": {
+    "description": "the main character in a story",
+    "sentence": "The protagonist faced a moral dilemma at the story's climax."
+  },
+  "prudent": {
+    "description": "wise in practical matters; careful",
+    "sentence": "Saving for emergencies is a prudent financial habit."
+  },
+  "pugnacious": {
+    "description": "eager or quick to argue or fight",
+    "sentence": "The pugnacious boxer won match after match."
+  },
+  "quarantine": {
+    "description": "isolate to prevent disease spread",
+    "sentence": "After returning from travel, they had to quarantine for two weeks."
+  },
+  "quell": {
+    "description": "put an end to; suppress",
+    "sentence": "The police were called to quell the disturbance."
+  },
+  "querulous": {
+    "description": "complaining in a whining manner",
+    "sentence": "His querulous tone irritated everyone in the meeting."
+  },
+  "quibble": {
+    "description": "argue about trivial matters",
+    "sentence": "Let's not quibble over minor details right now."
+  },
+  "quintessence": {
+    "description": "the most perfect example of something",
+    "sentence": "He was the quintessence of kindness."
+  },
+  "rambunctious": {
+    "description": "uncontrollably exuberant; boisterous",
+    "sentence": "The puppies were so rambunctious, they knocked over a vase."
+  },
+  "ramification": {
+    "description": "a consequence of an action",
+    "sentence": "They considered every ramification of the proposed law."
+  },
+  "rapacious": {
+    "description": "greedy or grasping, often in a negative sense",
+    "sentence": "The rapacious landlord raised the rent without warning."
+  },
+  "rationalize": {
+    "description": "justify with logical reasons",
+    "sentence": "She tried to rationalize her decision with statistics."
+  },
+  "rebut": {
+    "description": "disprove by argument or evidence",
+    "sentence": "He attempted to rebut the accusations in his defense."
+  },
+  "recant": {
+    "description": "withdraw a statement or belief formally",
+    "sentence": "Under pressure, the witness decided to recant her testimony."
+  },
+  "redundancy": {
+    "description": "unnecessary repetition or excess",
+    "sentence": "The essay contained redundancies that needed to be removed."
+  },
+  "rejuvenate": {
+    "description": "make someone feel younger or fresher",
+    "sentence": "A vacation by the ocean can really rejuvenate the mind."
+  },
+  "relinquish": {
+    "description": "voluntarily give up something",
+    "sentence": "He had to relinquish control of the company."
+  },
+  "renegade": {
+    "description": "person who deserts a cause and goes independent",
+    "sentence": "The spy became a renegade after defecting to the enemy."
+  },
+  "reticent": {
+    "description": "not revealing one's thoughts readily; reserved",
+    "sentence": "She was reticent to speak at the meeting."
+  },
+  "reverie": {
+    "description": "a daydream; state of being lost in thought",
+    "sentence": "Lost in reverie, he almost missed the announcement."
+  },
+  "resilient": {
+    "description": "able to recover quickly; tough",
+    "sentence": "Children are often resilient and adapt to changes easily."
+  },
+  "reminisce": {
+    "description": "recall past experiences or events",
+    "sentence": "They would often reminisce about their college days."
+  },
+  "rescind": {
+    "description": "revoke or cancel formally",
+    "sentence": "They decided to rescind the offer when new information came to light."
+  },
+  "sagacious": {
+    "description": "wise; having sound judgment",
+    "sentence": "The sagacious leader guided the nation through crisis."
+  },
+  "sanctuary": {
+    "description": "a place of refuge or safety",
+    "sentence": "The wounded deer found sanctuary in the forest."
+  },
+  "sardonic": {
+    "description": "grimly mocking or cynical",
+    "sentence": "His sardonic smile annoyed his critics."
+  },
+  "scrupulous": {
+    "description": "diligent, thorough, and principled",
+    "sentence": "She was scrupulous about following every rule."
+  },
+  "sensory": {
+    "description": "relating to sensation or the senses",
+    "sentence": "The spicy soup created a strong sensory experience."
+  },
+  "serene": {
+    "description": "calm, peaceful, and untroubled",
+    "sentence": "They sat by the lake enjoying the serene afternoon."
+  },
+  "solicit": {
+    "description": "ask for or try to obtain (something)",
+    "sentence": "He would often solicit feedback from his mentors."
+  },
+  "sophisticated": {
+    "description": "developed to a high degree of complexity; refined",
+    "sentence": "The new computer system has a sophisticated interface."
+  },
+  "spontaneous": {
+    "description": "performed or occurring without premeditation; impulsive",
+    "sentence": "Her spontaneous decision led to a memorable adventure."
+  },
+  "succinct": {
+    "description": "briefly and clearly expressed",
+    "sentence": "His succinct reply answered all our questions."
+  },
+  "succumb": {
+    "description": "give in to pressure or temptation",
+    "sentence": "She would not succumb to pressure from her friends."
+  },
+  "superfluous": {
+    "description": "unnecessary, especially more than enough",
+    "sentence": "He cut out all superfluous details from the report."
+  },
+  "synoptic": {
+    "description": "giving a general summary or overview",
+    "sentence": "She provided a synoptic summary of the year's events."
+  },
+  "surreal": {
+    "description": "bizarre or dreamlike; unreal",
+    "sentence": "Walking into the room filled with balloons felt surreal."
+  },
+  "tacit": {
+    "description": "understood without being openly expressed",
+    "sentence": "They had a tacit agreement not to discuss the topic."
+  },
+  "tactile": {
+    "description": "relating to the sense of touch",
+    "sentence": "The fabric had a pleasant tactile quality."
+  },
+  "talisman": {
+    "description": "an object believed to bring good luck",
+    "sentence": "The old ring was considered a family talisman."
+  },
+  "tantrum": {
+    "description": "an uncontrolled outburst of anger",
+    "sentence": "The toddler's tantrum was heard down the hall."
+  },
+  "tautology": {
+    "description": "redundant or meaningless repetition",
+    "sentence": "Saying \"free gift\" is a tautology."
+  },
+  "teeming": {
+    "description": "overflowing or swarming with",
+    "sentence": "The marketplace was teeming with shoppers."
+  },
+  "tangible": {
+    "description": "perceptible by touch; clear and real",
+    "sentence": "They needed tangible evidence before proceeding."
+  },
+  "taunt": {
+    "description": "to jeer at or mock someone",
+    "sentence": "The older kids would often taunt the younger ones."
+  },
+  "thrifty": {
+    "description": "using money and resources carefully; not wasteful",
+    "sentence": "Being thrifty helped them save for their future."
+  },
+  "transient": {
+    "description": "temporary; lasting only a short time",
+    "sentence": "The beauty of the sunset was transient but unforgettable."
+  },
+  "travesty": {
+    "description": "a distorted or absurd representation of something",
+    "sentence": "The trial was a travesty of justice, with no real evidence presented."
+  },
+  "treacherous": {
+    "description": "dangerously unstable or unpredictable",
+    "sentence": "The mountain road was narrow and treacherous."
+  },
+  "tribulation": {
+    "description": "a cause of great trouble or suffering",
+    "sentence": "She remained strong through every tribulation."
+  },
+  "truculent": {
+    "description": "eager to argue or fight; aggressively defiant",
+    "sentence": "His truculent attitude got him into trouble."
+  },
+  "turbulent": {
+    "description": "characterized by conflict or disorder",
+    "sentence": "The country went through a turbulent period after the war."
+  },
+  "tyranny": {
+    "description": "cruel and oppressive government or rule",
+    "sentence": "They rebelled against the tyranny of the regime."
+  },
+  "ubiquitous": {
+    "description": "present or found everywhere",
+    "sentence": "Smartphones have become ubiquitous in modern society."
+  },
+  "undermine": {
+    "description": "weaken or damage something",
+    "sentence": "Negative comments can undermine a person's confidence."
+  },
+  "unprecedented": {
+    "description": "never done or known before",
+    "sentence": "The pandemic brought unprecedented challenges."
+  },
+  "untenable": {
+    "description": "not able to be defended or justified",
+    "sentence": "Her excuse was clearly untenable."
+  },
+  "utopia": {
+    "description": "an imagined perfect place or state",
+    "sentence": "He dreamed of a utopia where everyone was equal."
+  },
+  "usurp": {
+    "description": "take a position of power illegally or by force",
+    "sentence": "The general tried to usurp the throne."
+  },
+  "vacuous": {
+    "description": "having or showing a lack of thought or intelligence",
+    "sentence": "The conversation was vacuous, focused only on trivial matters."
+  },
+  "venerate": {
+    "description": "regard with great respect; revere",
+    "sentence": "They venerate the ancient traditions of their culture."
+  },
+  "venerable": {
+    "description": "accorded a great deal of respect, especially because of age or wisdom",
+    "sentence": "The venerable professor had taught at the university for over fifty years."
+  },
+  "vengeance": {
+    "description": "punishment inflicted in return for an injury or wrong",
+    "sentence": "He swore vengeance for the betrayal."
+  },
+  "verdict": {
+    "description": "a decision on a disputed issue in a civil or criminal case",
+    "sentence": "The jury returned a guilty verdict after deliberation."
+  },
+  "vexation": {
+    "description": "the state of being annoyed or worried",
+    "sentence": "Losing the keys caused great vexation."
+  },
+  "vilify": {
+    "description": "speak or write about in an abusively disparaging manner",
+    "sentence": "It was wrong to vilify the whistleblower for doing his job."
+  },
+  "virtue": {
+    "description": "behavior showing high moral standards",
+    "sentence": "Patience is a virtue worth cultivating."
+  },
+  "virtuoso": {
+    "description": "a person highly skilled in music or art",
+    "sentence": "She was a piano virtuoso at just twelve years old."
+  },
+  "vociferous": {
+    "description": "loud and insistent; vehement",
+    "sentence": "The protesters were vociferous in their demands."
+  },
+  "volatile": {
+    "description": "liable to change rapidly and unpredictably",
+    "sentence": "The political climate was volatile at the time."
+  },
+  "voracious": {
+    "description": "having a very eager approach to an activity or devouring large amounts of food",
+    "sentence": "He had a voracious appetite for learning new languages."
+  },
+  "vulnerable": {
+    "description": "exposed to the possibility of being attacked or harmed",
+    "sentence": "Young seedlings are vulnerable to frost."
+  },
+  "waive": {
+    "description": "refrain from insisting on something",
+    "sentence": "They decided to waive the fees for the charity."
+  },
+  "wanderlust": {
+    "description": "a strong desire to travel",
+    "sentence": "His wanderlust took him across five continents."
+  },
+  "warrant": {
+    "description": "justify or necessitate",
+    "sentence": "The evidence did not warrant such a severe punishment."
+  },
+  "wary": {
+    "description": "feeling or showing caution about possible dangers",
+    "sentence": "She was wary of the stranger's intentions."
+  },
+  "wistful": {
+    "description": "having or showing a feeling of vague or regretful longing",
+    "sentence": "She gave a wistful glance at her childhood home."
+  },
+  "xenophobia": {
+    "description": "intense or irrational dislike or fear of foreigners",
+    "sentence": "A surge in xenophobia has troubled the community."
+  },
+  "xylophone": {
+    "description": "a musical instrument with wooden bars of different lengths",
+    "sentence": "The musician played a tune on the xylophone."
+  },
+  "yearn": {
+    "description": "have an intense feeling of longing",
+    "sentence": "He would yearn for his family while on tour."
+  },
+  "yoke": {
+    "description": "to join together or harness animals",
+    "sentence": "Farmers used an oxen yoke to plow the field."
+  },
+  "zeal": {
+    "description": "great energy or enthusiasm in pursuit of a cause",
+    "sentence": "Her zeal for baking filled the kitchen with fresh bread."
+  },
+  "zenith": {
+    "description": "the highest point or peak",
+    "sentence": "He reached the zenith of his career at age forty."
+  },
+  "zephyr": {
+    "description": "a gentle breeze",
+    "sentence": "A zephyr blew through the open window on a summer day."
+  }
+}
