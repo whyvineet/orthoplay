@@ -9,7 +9,6 @@ import GameLegend from '../components/GameLegend';
 const GamePage = ({
   gamePhase,
   isLoading,
-  isPlayingAudio,
   currentGame,
   lengthFeedback,
   currentGuess,
@@ -21,7 +20,6 @@ const GamePage = ({
   guessLength,
   submitSpelling,
   revealAnswer,
-  playAudio,
   errorMessage,
   setErrorMessage,
 }) => {
@@ -57,8 +55,6 @@ const GamePage = ({
         <div className="max-w-4xl mx-auto space-y-6">
           <AudioPlayer
             currentGame={currentGame}
-            isPlayingAudio={isPlayingAudio}
-            playAudio={playAudio}
           />
 
           <WordDescription description={currentGame.description} />

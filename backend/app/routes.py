@@ -25,12 +25,11 @@ async def start_game(request: GameStartRequest):
         game_data = game_service.start_game()
         word_data = game_data["word_data"]
         
-        audio_data = game_service.audio_service.generate_audio(game_data["word"])
         length_options = game_service.generate_length_options(len(game_data["word"]))
         
         return GameStartResponse(
             word_id=game_data["session_id"],
-            audio_data=audio_data,
+            word=game_data["word"],
             description=word_data["description"],
             length_options=length_options
         )
@@ -94,7 +93,6 @@ async def submit_spelling(request: SpellingGuessRequest):
             response_data.update({
                 "correct_word": correct_word,
                 "example_sentence": word_data["sentence"],
-                "correct_word_audio": game_service.audio_service.generate_audio(correct_word),
                 "message": f"🎉 Excellent! You got it right in {session['attempts']} attempts!"
             })
         else:
@@ -118,12 +116,10 @@ async def reveal_answer(request: RevealAnswerRequest):
         correct_word = session["word"]
         word_data = game_service.word_service.get_word_data(correct_word)
         
-        audio_data = game_service.audio_service.generate_audio(correct_word)
         session["completed"] = True
         
         return RevealAnswerResponse(
             correct_word=correct_word,
-            correct_word_audio=audio_data,
             example_sentence=word_data["sentence"],
             message=f"The correct word was '{correct_word}'. Better luck next time!"
         )

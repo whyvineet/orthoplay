@@ -3,10 +3,7 @@
 import json
 import os
 import random
-import base64
-import tempfile
 from typing import Dict, List
-from gtts import gTTS
 
 
 class WordService:
@@ -30,35 +27,11 @@ class WordService:
         return self.words.get(word, {})
 
 
-class AudioService:
-    """Service for generating TTS audio."""
-    
-    @staticmethod
-    def generate_audio(text: str) -> str:
-        """Generate TTS audio and return as base64 string."""
-        try:
-            tts = gTTS(text=text, lang='en', slow=True)
-            
-            with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as tmp_file:
-                tts.save(tmp_file.name)
-                
-                with open(tmp_file.name, 'rb') as audio_file:
-                    audio_data = base64.b64encode(audio_file.read()).decode('utf-8')
-                
-                os.unlink(tmp_file.name)
-                
-            return audio_data
-        except Exception as e:
-            print(f"TTS Error: {e}")
-            return ""
-
-
 class GameService:
     """Service for game logic."""
     
     def __init__(self):
         self.word_service = WordService()
-        self.audio_service = AudioService()
         self.game_sessions = {}
     
     def start_game(self) -> Dict:

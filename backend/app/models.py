@@ -10,7 +10,7 @@ class GameStartRequest(BaseModel):
 
 class GameStartResponse(BaseModel):
     word_id: str
-    audio_data: str
+    word: str
     description: str
     length_options: List[int]
 
@@ -37,7 +37,6 @@ class SpellingGuessResponse(BaseModel):
     is_correct: bool
     correct_word: Optional[str] = None
     example_sentence: Optional[str] = None
-    correct_word_audio: Optional[str] = None
     word_length: int
     message: str
 
@@ -48,6 +47,5 @@ class RevealAnswerRequest(BaseModel):
 
 class RevealAnswerResponse(BaseModel):
     correct_word: str
-    correct_word_audio: str
     example_sentence: str
     message: str

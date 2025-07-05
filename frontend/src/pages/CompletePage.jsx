@@ -1,16 +1,39 @@
 import { Volume2, RotateCcw, Trophy, Frown } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ttsService } from '../services/ttsService.js';
 import Footer from '../components/Footer';
 
 const CompletePage = ({
     isWinner,
     correctWord,
     exampleSentence,
-    correctWordAudio,
-    isPlayingAudio,
     attempts,
     resetGame,
-    playAudio,
 }) => {
+    const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+    const [speechSupported, setSpeechSupported] = useState(false);
+
+    useEffect(() => {
+        setSpeechSupported(ttsService.isSupported);
+    }, []);
+
+    const playAudio = async () => {
+        if (!speechSupported) {
+            alert('Text-to-Speech is not supported in your browser');
+            return;
+        }
+
+        try {
+            await ttsService.speak(correctWord, {
+                onStart: () => setIsPlayingAudio(true),
+                onEnd: () => setIsPlayingAudio(false),
+                onError: () => setIsPlayingAudio(false)
+            });
+        } catch (error) {
+            console.error('TTS error:', error);
+            setIsPlayingAudio(false);
+        }
+    };
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col">
             <div className="container mx-auto px-4 py-8 flex-grow">
@@ -42,8 +65,8 @@ const CompletePage = ({
                             <p className="text-lg text-gray-600 mb-6 italic">"{exampleSentence}"</p>
 
                             <button
-                                onClick={() => playAudio(correctWordAudio)}
-                                disabled={!correctWordAudio || isPlayingAudio}
+                                onClick={playAudio}
+                                disabled={!speechSupported || isPlayingAudio}
                                 className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mb-6"
                             >
                                 <Volume2 className="h-5 w-5 mr-2" />

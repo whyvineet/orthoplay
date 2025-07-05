@@ -4,16 +4,14 @@ import GamePage from './pages/GamePage';
 import CompletePage from './pages/CompletePage';
 import ErrorMessage from './components/ErrorMessage';
 import { apiService } from './services/apiService';
-import { audioService } from './services/audioService';
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'
   const [gamePhase, setGamePhase] = useState('length'); // 'length', 'spelling'
   const [isLoading, setIsLoading] = useState(false);
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [currentGame, setCurrentGame] = useState({
     wordId: '',
-    audioData: '',
+    word: '',
     description: '',
     lengthOptions: [],
   });
@@ -24,7 +22,6 @@ const OrthoplayGame = () => {
   const [lastMessage, setLastMessage] = useState('');
   const [correctWord, setCorrectWord] = useState('');
   const [exampleSentence, setExampleSentence] = useState('');
-  const [correctWordAudio, setCorrectWordAudio] = useState('');
   const [isWinner, setIsWinner] = useState(false);
   const [apiStatus, setApiStatus] = useState('unknown');
   const [errorMessage, setErrorMessage] = useState('');
@@ -49,23 +46,6 @@ const OrthoplayGame = () => {
     setTimeout(() => setErrorMessage(''), 10000);
   };
 
-  const playAudio = async (audioData = currentGame.audioData) => {
-    if (!audioData) {
-      showError('No audio data available');
-      return;
-    }
-
-    setIsPlayingAudio(true);
-    try {
-      await audioService.playAudio(audioData);
-      setIsPlayingAudio(false);
-    } catch (error) {
-      console.error('Error playing audio:', error);
-      setIsPlayingAudio(false);
-      showError('Failed to play audio');
-    }
-  };
-
   const startGame = async () => {
     setIsLoading(true);
     setErrorMessage('');
@@ -74,7 +54,7 @@ const OrthoplayGame = () => {
       const data = await apiService.startGame();
       setCurrentGame({
         wordId: data.word_id,
-        audioData: data.audio_data,
+        word: data.word,
         description: data.description,
         lengthOptions: data.length_options,
       });
@@ -141,7 +121,6 @@ const OrthoplayGame = () => {
       if (data.is_correct) {
         setCorrectWord(data.correct_word);
         setExampleSentence(data.example_sentence);
-        setCorrectWordAudio(data.correct_word_audio);
         setIsWinner(true);
         setGameState('complete');
       }
@@ -163,7 +142,6 @@ const OrthoplayGame = () => {
       const data = await apiService.revealAnswer(currentGame.wordId);
       setCorrectWord(data.correct_word);
       setExampleSentence(data.example_sentence);
-      setCorrectWordAudio(data.correct_word_audio);
       setIsWinner(false);
       setLastMessage(data.message);
       setGameState('complete');
@@ -190,7 +168,6 @@ const OrthoplayGame = () => {
     setLastMessage('');
     setCorrectWord('');
     setExampleSentence('');
-    setCorrectWordAudio('');
     setIsWinner(false);
     setWordLength(0);
   };
@@ -198,7 +175,7 @@ const OrthoplayGame = () => {
   const resetCurrentGame = () => {
     setCurrentGame({
       wordId: '',
-      audioData: '',
+      word: '',
       description: '',
       lengthOptions: [],
     });
@@ -208,7 +185,6 @@ const OrthoplayGame = () => {
     gameState,
     gamePhase,
     isLoading,
-    isPlayingAudio,
     currentGame,
     lengthFeedback,
     currentGuess,
@@ -218,7 +194,6 @@ const OrthoplayGame = () => {
     lastMessage,
     correctWord,
     exampleSentence,
-    correctWordAudio,
     isWinner,
     apiStatus,
     wordLength,
@@ -227,7 +202,6 @@ const OrthoplayGame = () => {
     submitSpelling,
     revealAnswer,
     resetGame,
-    playAudio,
   };
 
   return (
