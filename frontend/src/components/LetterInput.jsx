@@ -8,13 +8,11 @@ const LetterInput = ({ value, onChange, index, feedback, isActive, maxLength }) 
 
     const handleKeyDown = (e) => {
         if (e.key === 'Backspace' && !value && index > 0) {
-            // Move focus to previous input when backspacing on empty field
             const prevInput = e.target.previousElementSibling;
             if (prevInput) {
                 prevInput.focus();
             }
         } else if (e.key.length === 1 && /^[A-Za-z]$/.test(e.key) && value && index < maxLength - 1) {
-            // Move focus to next input when typing on filled field
             const nextInput = e.target.nextElementSibling;
             if (nextInput) {
                 nextInput.focus();
@@ -24,7 +22,6 @@ const LetterInput = ({ value, onChange, index, feedback, isActive, maxLength }) 
 
     const getBackgroundColor = () => {
         if (!feedback) return 'bg-white';
-
         switch (feedback) {
             case 'correct':
                 return 'bg-green-100 border-green-500';
@@ -43,8 +40,7 @@ const LetterInput = ({ value, onChange, index, feedback, isActive, maxLength }) 
             value={value}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
-            className={`w-12 h-12 text-center text-lg font-bold border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ${getBackgroundColor()} ${isActive ? 'ring-2 ring-blue-500' : ''
-                }`}
+            className={`w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg text-center font-bold border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ${getBackgroundColor()} ${isActive ? 'ring-2 ring-blue-500' : ''}`}
             maxLength={1}
             autoFocus={index === 0}
         />

@@ -25,11 +25,11 @@ const GamePage = ({
 }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-10">
         {/* Header */}
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Orthoplay</h1>
-          <div className="flex items-center justify-center text-sm text-gray-500">
+        <header className="text-center mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Orthoplay</h1>
+          <div className="flex items-center justify-center text-xs sm:text-sm text-gray-500">
             <span className="px-3 py-1 bg-white rounded-full shadow-sm">
               Attempts: {attempts}
             </span>
@@ -38,7 +38,7 @@ const GamePage = ({
 
         {/* Error Message */}
         {errorMessage && (
-          <div className="max-w-4xl mx-auto mb-6">
+          <div className="max-w-3xl mx-auto mb-6">
             <div className="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-center shadow-sm">
               <AlertCircle className="h-5 w-5 text-red-500 mr-3" />
               <span className="text-red-800 text-sm flex-1">{errorMessage}</span>
@@ -52,10 +52,9 @@ const GamePage = ({
           </div>
         )}
 
-        <div className="max-w-4xl mx-auto space-y-6">
-          <AudioPlayer
-            currentGame={currentGame}
-          />
+        {/* Main Game Content */}
+        <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8">
+          <AudioPlayer currentGame={currentGame} />
 
           <WordDescription description={currentGame.description} />
 
