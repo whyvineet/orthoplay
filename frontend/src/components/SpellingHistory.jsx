@@ -22,22 +22,22 @@ const SpellingHistory = ({ spellingHistory, lastMessage }) => {
     };
 
     return (
-        <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+        <div className="bg-white rounded-3xl shadow-lg border border-gray-100 px-4 py-6 sm:p-8">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
                 <Target className="h-5 w-5 mr-2" />
                 Your Attempts
             </h3>
 
             <div className="space-y-4">
                 {spellingHistory.map((attempt, index) => (
-                    <div key={index} className="flex justify-center gap-2">
-                        <span className="text-sm text-gray-500 font-medium w-8 flex items-center justify-center">
+                    <div key={index} className="flex flex-wrap justify-center gap-1 sm:gap-2">
+                        <span className="text-xs sm:text-sm text-gray-500 font-medium w-6 sm:w-8 flex items-center justify-center">
                             #{index + 1}
                         </span>
                         {attempt.feedback.map((emoji, i) => (
                             <div
                                 key={i}
-                                className={`w-12 h-12 rounded-lg flex items-center justify-center text-lg font-bold border-2 ${getLetterClass(emoji)}`}
+                                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-base sm:text-lg font-bold border-2 ${getLetterClass(emoji)}`}
                             >
                                 {attempt.guess[i]?.toUpperCase() || ''}
                             </div>
@@ -47,8 +47,10 @@ const SpellingHistory = ({ spellingHistory, lastMessage }) => {
             </div>
 
             {lastMessage && (
-                <div className="mt-6 p-4 bg-blue-50 rounded-xl">
-                    <p className="text-blue-800 text-sm font-medium text-center">{lastMessage}</p>
+                <div className="mt-6 p-3 sm:p-4 bg-blue-50 rounded-xl">
+                    <p className="text-blue-800 text-xs sm:text-sm font-medium text-center">
+                        {lastMessage}
+                    </p>
                 </div>
             )}
         </div>

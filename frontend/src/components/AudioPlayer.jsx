@@ -13,7 +13,7 @@ const AudioPlayer = ({ currentGame }) => {
             try {
                 await ttsService.initialize();
                 setSpeechSupported(ttsService.isSupported);
-                
+
                 const bestVoice = ttsService.getBestVoice();
                 setCurrentVoice(bestVoice);
                 console.log('TTS ready with voice:', bestVoice?.name);
@@ -37,8 +37,6 @@ const AudioPlayer = ({ currentGame }) => {
             alert('Word not available for playback');
             return;
         }
-
-        console.log('Playing word:', currentGame.word);
 
         try {
             await ttsService.speak(currentGame.word, {
@@ -65,36 +63,36 @@ const AudioPlayer = ({ currentGame }) => {
 
     const handleRetry = () => {
         setIsRetrying(true);
-
-        // Wait a moment and try again
         setTimeout(() => {
             playAudio();
             setIsRetrying(false);
         }, 500);
-    };    return (
-        <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8">
+    };
+
+    return (
+        <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6 sm:p-8 w-full">
             <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center justify-center">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex flex-wrap items-center justify-center">
                     <Volume2 className="h-6 w-6 mr-2" />
                     Listen to the word
                 </h3>
-                
+
                 {speechSupported ? (
                     <div className="space-y-4">
-                        <div className="flex gap-3 justify-center">
+                        <div className="flex flex-wrap gap-3 justify-center">
                             <button
                                 onClick={playAudio}
                                 disabled={isPlayingAudio || !currentGame.word}
-                                className="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white text-lg font-semibold rounded-2xl hover:bg-green-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white text-base sm:text-lg font-semibold rounded-2xl hover:bg-green-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <Play className="h-5 w-5 mr-2" />
                                 {isPlayingAudio ? 'Playing...' : 'Play Word'}
                             </button>
-                            
+
                             {isPlayingAudio && (
                                 <button
                                     onClick={stopAudio}
-                                    className="inline-flex items-center justify-center px-6 py-4 bg-red-600 text-white text-lg font-semibold rounded-2xl hover:bg-red-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                                    className="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white text-base sm:text-lg font-semibold rounded-2xl hover:bg-red-700 transition-all duration-200 shadow-lg hover:shadow-xl"
                                 >
                                     <Square className="h-5 w-5 mr-2" />
                                     Stop
