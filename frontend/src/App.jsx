@@ -4,6 +4,7 @@ import GamePage from './pages/GamePage';
 import CompletePage from './pages/CompletePage';
 import ErrorMessage from './components/ErrorMessage';
 import { apiService } from './services/apiService';
+import { AuthProvider } from './AuthContext';
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'

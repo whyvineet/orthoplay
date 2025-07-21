@@ -1,6 +1,14 @@
 import { CheckCircle, XCircle } from 'lucide-react';
+import { useAuth } from '../AuthContext'; 
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = ({ apiStatus }) => {
+    const { token, logout } = useAuth(); 
+    const navigate = useNavigate();
+
+    const handleLoginClick = () => navigate('/login');
+    const handleSignupClick = () => navigate('/signup');
+
     return (
         <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 mb-12 rounded-t-3xl shadow-sm">
             <div className="max-w-7xl mx-auto px-4">
@@ -16,10 +24,34 @@ const Navigation = ({ apiStatus }) => {
                         <button className="text-gray-600 hover:text-gray-900 transition-colors">
                             About
                         </button>
+
+                        {token ? (
+                            <button
+                                onClick={logout}
+                                className="text-red-600 hover:text-red-800 font-medium transition-colors"
+                            >
+                                Logout
+                            </button>
+                        ) : (
+                            <>
+                                <button
+                                    onClick={handleLoginClick}
+                                    className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                                >
+                                    Login
+                                </button>
+                                <button
+                                    onClick={handleSignupClick}
+                                    className="text-green-600 hover:text-green-800 font-medium transition-colors"
+                                >
+                                    Sign Up
+                                </button>
+                            </>
+                        )}
+
                         <div className="flex items-center text-sm">
                             <span className="text-gray-500 mr-2">API:</span>
-                            <span className={`flex items-center font-medium ${apiStatus === 'connected' ? 'text-green-600' : 'text-red-600'
-                                }`}>
+                            <span className={`flex items-center font-medium ${apiStatus === 'connected' ? 'text-green-600' : 'text-red-600'}`}>
                                 {apiStatus === 'connected' ? (
                                     <CheckCircle className="h-4 w-4 mr-1" />
                                 ) : (
