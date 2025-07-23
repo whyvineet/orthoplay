@@ -1,5 +1,4 @@
 import { Volume2, CheckCircle, XCircle } from "lucide-react";
-import Footer from "../components/Footer";
 
 const StartPage = ({ isLoading, startGame, apiStatus }) => {
   return (
@@ -69,8 +68,6 @@ const StartPage = ({ isLoading, startGame, apiStatus }) => {
           </div>
         </div>
 
-        {/* Footer */}
-        <Footer />
       </div>
     </div>
   );

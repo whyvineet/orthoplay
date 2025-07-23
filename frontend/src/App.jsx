@@ -5,6 +5,7 @@ import CompletePage from './pages/CompletePage';
 import ErrorMessage from './components/ErrorMessage';
 import { apiService } from './services/apiService';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'
@@ -215,9 +216,14 @@ const OrthoplayGame = () => {
       )}
 
       <Navigation apiStatus={apiStatus} />
-      {gameState === 'start' && <StartPage {...gameProps} />}
-      {gameState === 'playing' && <GamePage {...gameProps} />}
-      {gameState === 'complete' && <CompletePage {...gameProps} />}
+
+      <main className='min-h-screen'>
+        {gameState === 'start' && <StartPage {...gameProps} />}
+        {gameState === 'playing' && <GamePage {...gameProps} />}
+        {gameState === 'complete' && <CompletePage {...gameProps} />}
+      </main>
+
+      <Footer />
     </>
   );
 };
