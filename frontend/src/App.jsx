@@ -7,6 +7,10 @@ import { apiService } from './services/apiService';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ContributorsPage from './pages/ContributorsPage';
+
+
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'
   const [gamePhase, setGamePhase] = useState('length'); // 'length', 'spelling'
@@ -218,9 +222,24 @@ const OrthoplayGame = () => {
       <Navigation apiStatus={apiStatus} />
 
       <main className='min-h-screen'>
-        {gameState === 'start' && <StartPage {...gameProps} />}
-        {gameState === 'playing' && <GamePage {...gameProps} />}
-        {gameState === 'complete' && <CompletePage {...gameProps} />}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/our-contributors" element={<ContributorsPage />} />
+            <Route
+              path="/"
+              element={
+                gameState === 'start' ? (
+                  <StartPage {...gameProps} />
+                ) : gameState === 'playing' ? (
+                  <GamePage {...gameProps} />
+                ) : gameState === 'complete' ? (
+                  <CompletePage {...gameProps} />
+                ) : null
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+
       </main>
 
       <Footer />

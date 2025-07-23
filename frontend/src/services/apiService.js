@@ -30,6 +30,16 @@ class ApiService {
         }
     }
 
+    async fetchContributors() {
+        try {
+            const response = await this.makeRequest('/project/contributors');
+            return response
+        } catch (error) {
+            console.error('Failed to get the contributors', error);
+            return {error: "Failed to fetch the contributors", response: null};
+        }
+    }
+
     async checkHealth() {
         try {
             const response = await this.makeRequest('/health');
