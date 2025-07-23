@@ -24,8 +24,6 @@ const ContributorsPage = () => {
     }, []);
 
     const finalContributors = contributors.sort((a, b) => b.contributions - a.contributions);
-    ;
-
     return (
         <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-12 px-4 min-h-screen mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8">
