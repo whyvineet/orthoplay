@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiService } from "../services/apiService";
-import { Loader2 } from "lucide-react";
+import { Github, Loader2 } from "lucide-react";
 
 const ContributorsPage = () => {
     const [contributors, setContributors] = useState([]);
@@ -37,11 +37,12 @@ const ContributorsPage = () => {
                     {Array.from({ length: 6 }).map((_, index) => (
                         <div
                             key={index}
-                            className="bg-white rounded-xl shadow-md p-6 text-center flex flex-col items-center space-y-4 animate-pulse"
+                            className="bg-white rounded-xl shadow-md pt-6 text-center flex flex-col items-center space-y-4 animate-pulse"
                         >
                             <div className="w-20 h-20 bg-gray-200 rounded-lg" />
                             <div className="w-1/3 h-4 bg-gray-200 rounded" />
                             <div className="w-1/4 h-3 bg-gray-200 rounded" />
+                            <div className="w-full bg-gray-200 rounded-b-lg h-12" />
                         </div>
                     ))}
                 </div>
@@ -52,25 +53,37 @@ const ContributorsPage = () => {
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {finalContributors.map((user) => (
-                        <a
+                        <div
                             key={user.login}
-                            href={user.html_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white rounded-xl shadow-md hover:shadow-lg transition p-6 text-center flex flex-col items-center space-y-4"
+                            className="relative overflow-hidden bg-white rounded-xl shadow-md hover:shadow-lg transition flex flex-col items-center pt-6 pb-0 text-center space-y-4 group"
                         >
+
                             <img
                                 src={user.avatar_url}
                                 alt={user.login}
-                                className="w-20 h-20 rounded-lg border"
+                                className=" w-20 h-20 rounded-lg border shadow-md bg-white"
                             />
-                            <div>
+
+                            {/* Username & Contributions */}
+                            <div className="">
                                 <h3 className="text-lg font-semibold">@{user.login}</h3>
-                                <p className="text-sm text-gray-500">
-                                    {user.contributions} contributions
+                                <p className="mt-2 text-sm text-gray-600 bg-amber-100 rounded-3xl inline-block px-4 py-1.5 font-medium">
+                                    {user.contributions} {user.contributions > 1 ? 'contributions' : 'contribution'}
                                 </p>
                             </div>
-                        </a>
+
+                            {/* Profile Button */}
+                            <a
+                                href={user.html_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className=" flex justify-center items-center w-full h-12 bg-gray-900 text-white rounded-b-xl gap-x-2 font-medium hover:bg-black transition-colors"
+                            >
+                                <Github />
+                                <span>View Profile</span>
+                            </a>
+                        </div>
+
                     ))}
                 </div>
             )}
