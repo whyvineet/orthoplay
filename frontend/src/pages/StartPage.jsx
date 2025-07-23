@@ -1,12 +1,10 @@
 import { Volume2, CheckCircle, XCircle } from "lucide-react";
-import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
 const StartPage = ({ isLoading, startGame, apiStatus }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="container mx-auto px-4 py-8">
-        <Navigation apiStatus={apiStatus} />
+    <div className="min-h-screen bg-gradient-to-br pt-12 from-slate-50 to-blue-50">
+      <div className="container mx-auto">
         <header className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">
             <img

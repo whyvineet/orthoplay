@@ -4,6 +4,7 @@ import GamePage from './pages/GamePage';
 import CompletePage from './pages/CompletePage';
 import ErrorMessage from './components/ErrorMessage';
 import { apiService } from './services/apiService';
+import Navigation from './components/Navigation';
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'
@@ -207,12 +208,13 @@ const OrthoplayGame = () => {
   return (
     <>
       {errorMessage && (
-        <ErrorMessage 
-          message={errorMessage} 
-          onClose={() => setErrorMessage('')} 
+        <ErrorMessage
+          message={errorMessage}
+          onClose={() => setErrorMessage('')}
         />
       )}
-      
+
+      <Navigation apiStatus={apiStatus} />
       {gameState === 'start' && <StartPage {...gameProps} />}
       {gameState === 'playing' && <GamePage {...gameProps} />}
       {gameState === 'complete' && <CompletePage {...gameProps} />}
