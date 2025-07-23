@@ -62,10 +62,9 @@ const Footer = () => {
                 },
                 {
                     name: "Our contributors",
-                    href: "/",
+                    href: "/our-contributors",
                     icon: Users,
                     color: "text-green-400",
-                    isExternal: true,
                 },
             ],
         },
@@ -112,8 +111,6 @@ const Footer = () => {
                                     <li key={link.name}>
                                         <a
                                             href={link.href}
-                                            target={link.isExternal ? "_blank" : "_self"}
-                                            rel={link.isExternal ? "noopener noreferrer" : ""}
                                             className="text-gray-600 hover:text-gray-900 transition-colors duration-200 flex items-center gap-2 group"
                                         >
                                             <link.icon
