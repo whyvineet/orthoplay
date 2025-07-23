@@ -1,7 +1,6 @@
 import { Volume2, RotateCcw, Trophy, Frown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { ttsService } from '../services/ttsService.js';
-import Footer from '../components/Footer';
 
 const CompletePage = ({
     isWinner,
@@ -92,8 +91,6 @@ const CompletePage = ({
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </div>
     );
 };
