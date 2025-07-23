@@ -7,6 +7,54 @@ from app.services import GameService
 router = APIRouter()
 game_service = GameService()
 
+import os
+import json
+import time
+import requests
+from fastapi.responses import JSONResponse
+
+
+
+CONTRIBUTORS_CACHE_PATH = "contributors.json"
+GITHUB_REPO_API = "https://api.github.com/repos/whyvineet/orthoplay/contributors"
+CACHE_DURATION_SECONDS = 3600  # 1 hour -> to sustain the cache for a max of one hour.
+
+
+
+@router.get("/project/contributors")
+def get_contributors():
+    # Look for the cache file that contains stored data.
+    if os.path.exists(CONTRIBUTORS_CACHE_PATH):
+        with open(CONTRIBUTORS_CACHE_PATH, "r") as f:
+            cached_data = json.load(f)
+        
+        last_fetched = cached_data.get("fetched_at", 0)
+        current_time = time.time()
+
+        # Check if cached data is fresh (not older than 1 hour)
+        if current_time - last_fetched < CACHE_DURATION_SECONDS:
+            return JSONResponse(content=cached_data["data"])
+
+    # Fetch fresh data from GitHub API
+    try:
+        response = requests.get(GITHUB_REPO_API)
+        if response.status_code != 200:
+            raise Exception(f"GitHub API failed with status {response.status_code}")
+
+        contributors = response.json()
+
+        # Save to cache
+        with open(CONTRIBUTORS_CACHE_PATH, "w") as f:
+            json.dump({
+                "fetched_at": time.time(),
+                "data": contributors
+            }, f, indent=2)
+
+        return JSONResponse(content=contributors)
+    
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch contributors: {str(e)}")
+
 
 @router.get("/")
 async def root():
