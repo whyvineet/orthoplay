@@ -70,7 +70,15 @@ const SpellingGame = ({
         } else if (e.key === 'ArrowRight' && index < wordLength - 1) {
             focusInput(index + 1);
         } else if (e.key === 'Enter' && !guess.includes('')) {
-            submitSpelling();
+            (async () => {
+                await submitSpelling(guess.join(''));
+                const cleared = Array(wordLength).fill('');
+                setGuess(cleared);
+                setCurrentGuess('');
+                setTimeout(() => {
+                    inputsRef.current[0]?.focus();
+                }, 0);
+            })();
         }
     };
 
@@ -119,13 +127,23 @@ const SpellingGame = ({
 
                 <div className="flex justify-center space-x-4">
                     <button
-                        onClick={submitSpelling}
+                        onClick={async () => {
+                            await submitSpelling(currentGuess);
+
+                            const cleared = Array(wordLength).fill('');
+                            setGuess(cleared);
+                            setCurrentGuess('');
+                            setTimeout(() => {
+                                inputsRef.current[0]?.focus();
+                            }, 0);
+                        }}
                         disabled={isLoading || guess.includes('')}
                         className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <Send className="h-5 w-5 mr-2" />
                         {isLoading ? 'Checking...' : 'Submit'}
                     </button>
+
 
                     <button
                         onClick={revealAnswer}
