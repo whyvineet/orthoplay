@@ -1,28 +1,48 @@
 import { CheckCircle, XCircle, Menu } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navigation = ({ apiStatus }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navLinks = [
+    {
+      text: "How to Play",
+      redirectTo: "/how-to-play"
+    },
+    {
+      text: "About",
+      redirectTo: "/about"
+    },
+    {
+      text: "Our Contributors",
+      redirectTo: "/our-contributors"
+    }
+  ]
+
+
+
   return (
     <nav className="sticky top-0 bg-white/50 z-10 backdrop-blur-md border-b border-gray-200 shadow-sm flex items-center justify-between px-2">
       <div className="mx-auto md:px-4 flex items-center justify-between w-full p-1 md:h-16 h-12">
         {/* logo */}
-        <a href="/" className="transition-transform duration-600 text-gray-800 hover:text-black">
-        <div className="flex items-center">
+        <Link to={"/"} className="flex items-center">
           <img src="/icon.png" alt="Orthoplay Logo" className="w-8 h-8 mr-3" />
-          <span className="text-xl font-bold">Orthoplay</span>
-        </div>
-        </a>
-        
-
+          <span className="text-xl font-bold text-gray-900">Orthoplay</span>
+        </Link>
         {/* Desktop Navigation */}
         <div className="items-center space-x-6 hidden md:flex">
-          <button className="text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">
-            How to Play
-          </button>
-          <button className="text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">
-            About
-          </button>
+          {navLinks.map((navLink) => (
+            <Link
+              key={navLink.text}
+              to={navLink.redirectTo}
+              className="text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
+            >
+              {navLink.text}
+            </Link>
+          ))}
+
+
           <div className="flex items-center text-sm">
             <span className="text-gray-500 mr-2">API Status:</span>
             <span
@@ -49,8 +69,15 @@ const Navigation = ({ apiStatus }) => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-white p-4 flex flex-col gap-y-4 rounded-b-md shadow-lg z-50 text-sm items-center">
-            <div className="cursor-pointer text-gray-600 hover:text-gray-900 transition-colors ">How to Play</div>
-            <div className="cursor-pointer text-gray-600 hover:text-gray-900 transition-colors ">About</div>
+            {navLinks.map((navLink) => (
+              <Link
+                onClick={() => setIsOpen(false)}
+                className="cursor-pointer text-gray-600 hover:text-gray-900 transition-colors"
+                key={navLink.text}
+                to={navLink.redirectTo}>
+                {navLink.text}
+              </Link>
+            ))}
             <div className="flex items-center gap-2">
               <span>API Status:</span>
               <span
