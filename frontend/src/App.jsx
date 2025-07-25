@@ -183,6 +183,30 @@ const OrthoplayGame = () => {
     });
   };
 
+  const startGameWithDifficulty = async (difficulty) => {
+    setIsLoading(true);
+    setErrorMessage('');
+
+    try {
+      const data = await apiService.startGame(difficulty);
+      setCurrentGame({
+        wordId: data.word_id,
+        word: data.word,
+        description: data.description,
+        lengthOptions: data.length_options,
+      });
+
+      setGameState('playing');
+      setGamePhase('length');
+      resetGameData();
+    } catch (error) {
+      console.error('Error starting game:', error);
+      showError(`Failed to start game: ${error.message}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const gameProps = {
     gameState,
     gamePhase,
@@ -218,7 +242,7 @@ const OrthoplayGame = () => {
       <Navigation apiStatus={apiStatus} />
 
       <main className='min-h-screen'>
-        {gameState === 'start' && <StartPage {...gameProps} />}
+        {gameState === 'start' && <StartPage {...gameProps} startGameWithDifficulty={startGameWithDifficulty} />}
         {gameState === 'playing' && <GamePage {...gameProps} />}
         {gameState === 'complete' && <CompletePage {...gameProps} />}
       </main>
