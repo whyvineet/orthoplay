@@ -7,6 +7,12 @@ import { apiService } from './services/apiService';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ContributorsPage from './pages/ContributorsPage';
+import HowToPlay from './pages/HowToPlay';
+import AboutPage from './pages/AboutPage';
+
+
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'
   const [gamePhase, setGamePhase] = useState('length'); // 'length', 'spelling'
@@ -231,7 +237,8 @@ const OrthoplayGame = () => {
   };
 
   return (
-    <>
+    <BrowserRouter>
+
       {errorMessage && (
         <ErrorMessage
           message={errorMessage}
@@ -242,14 +249,30 @@ const OrthoplayGame = () => {
       <Navigation apiStatus={apiStatus} />
 
       <main className='min-h-screen'>
-        {gameState === 'start' && <StartPage {...gameProps} startGameWithDifficulty={startGameWithDifficulty} />}
-        {gameState === 'playing' && <GamePage {...gameProps} />}
-        {gameState === 'complete' && <CompletePage {...gameProps} />}
+
+               <Routes>
+          <Route path="/our-contributors" element={<ContributorsPage />} />
+          <Route path="/how-to-play" element={<HowToPlay />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/"
+            element={
+              gameState === 'start' ? (
+                <StartPage {...gameProps} startGameWithDifficulty={startGameWithDifficulty} />
+              ) : gameState === 'playing' ? (
+                <GamePage {...gameProps} />
+              ) : gameState === 'complete' ? (
+                <CompletePage {...gameProps} />
+              ) : null
+            }
+          />
+        </Routes>
       </main>
 
       <Footer />
-    </>
+    </BrowserRouter>
   );
 };
+
 
 export default OrthoplayGame;

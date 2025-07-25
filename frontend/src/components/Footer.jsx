@@ -8,6 +8,7 @@ import {
     Users,
     Heart,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -62,10 +63,9 @@ const Footer = () => {
                 },
                 {
                     name: "Our contributors",
-                    href: "/",
+                    href: "/our-contributors",
                     icon: Users,
                     color: "text-green-400",
-                    isExternal: true,
                 },
             ],
         },
@@ -110,17 +110,15 @@ const Footer = () => {
                             <ul className="space-y-3">
                                 {section.links.map((link) => (
                                     <li key={link.name}>
-                                        <a
-                                            href={link.href}
-                                            target={link.isExternal ? "_blank" : "_self"}
-                                            rel={link.isExternal ? "noopener noreferrer" : ""}
+                                        <Link
+                                            to={link.href}
                                             className="text-gray-600 hover:text-gray-900 transition-colors duration-200 flex items-center gap-2 group"
                                         >
                                             <link.icon
                                                 className={`w-4 h-4 ${link.color}`}
                                             />
                                             <span>{link.name}</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
