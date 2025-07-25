@@ -23,7 +23,7 @@ const Navigation = ({ apiStatus }) => {
 
 
   return (
-    <nav className="sticky top-0 bg-white/50 z-10 backdrop-blur-md border-b border-gray-200 shadow-sm flex items-center justify-between px-2">
+    <nav className="sticky top-0 bg-white/50 z-50 backdrop-blur-md border-b border-gray-200 shadow-sm flex items-center justify-between px-2">
       <div className="mx-auto md:px-4 flex items-center justify-between w-full p-1 md:h-16 h-12">
         {/* logo */}
         <Link to={"/"} className="flex items-center">
