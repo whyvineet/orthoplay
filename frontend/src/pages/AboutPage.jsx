@@ -20,7 +20,7 @@ const AboutPage = () => {
     ];
 
     return (
-        <div className="relative z-10 min-h-screen bg-gradient-to-br pt-6 bg-white py-12 px-4">
+        <div className="relative z-10 min-h-screen bg-gradient-to-br pt-6 from-slate-50 to-blue-50 py-12 px-4 gap-y-10 flex flex-col">
             {/* Hero Section */}
             <section className="max-w-5xl mx-auto flex flex-col gap-12">
                 <div className="flex flex-col items-start md:items-center md:text-center">
