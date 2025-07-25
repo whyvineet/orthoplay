@@ -1,4 +1,5 @@
-import { Github } from 'lucide-react';
+import { Github, UserRoundCheck } from 'lucide-react';
+import { Link } from 'react-router-dom'
 
 const AboutPage = () => {
     const featuresCard = [
@@ -59,31 +60,24 @@ const AboutPage = () => {
 
             {/* Open Source Section */}
             <section className="max-w-5xl mx-auto flex flex-col gap-6 md:gap-10 mt-24 px-2">
-                <div className="text-left md:text-center">
-                    <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                <div className="text-left md:text-center flex-col flex gap-y-4 ">
+                    <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight">
                         Orthoplay is Free & Open-Source
                     </h2>
 
-                    <p className="text-sm sm:text-xl text-gray-600 font-medium mb-4 max-w-2xl mx-auto">
-                        This project is proudly part of <strong>GirlScript Summer of Code (GSSoC) 2025</strong>. We're building in public — and you're invited to be a part of it.
+                    <p className="text-sm sm:text-xl text-gray-600 font-medium max-w-2xl mx-auto">
+                        Orthoplay is proudly open-sourced under the <strong>AGPL-3.0 License</strong>.
+                        You’re welcome to explore the code, contribute new features, or fix issues to make it even better!
                     </p>
                 </div>
 
-                {/* GSSoC Logo */}
-                <div className="flex justify-center">
-                    <img
-                        src="/svg/gssoc-2025-logo.png"
-                        alt="GSSoC 2025 Logo"
-                        className="w-36 sm:w-48 mb-2"
-                        loading="lazy"
-                    />
-                </div>
-
                 <p className="text-gray-700 text-center max-w-2xl mx-auto mb-6">
-                    Whether you're a beginner or a seasoned developer, your contributions are welcome! Improve gameplay, fix bugs, suggest new ideas — and grow with us. 🌱
+                    Whether you're just starting out or you're an experienced developer — your contributions matter.
+                    Let’s build a better learning game together. 🚀
                 </p>
 
-                <div className="flex justify-center">
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                     <a
                         href="https://github.com/whyvineet/orthoplay"
                         target="_blank"
@@ -93,6 +87,14 @@ const AboutPage = () => {
                         <Github size={20} />
                         Contribute on GitHub
                     </a>
+
+                    <Link
+                        href="/our-contributors"
+                        className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white font-semibold px-6 py-3 rounded-lg transition-all shadow-md"
+                    >
+                        <UserRoundCheck size={20} />
+                        View Contributors
+                    </Link>
                 </div>
             </section>
 
