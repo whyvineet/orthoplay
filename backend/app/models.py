@@ -13,6 +13,9 @@ class GameStartResponse(BaseModel):
     word: str
     description: str
     length_options: List[int]
+    hint1: str
+    hint2: str
+    hint3: str
 
 
 class GuessLengthRequest(BaseModel):
