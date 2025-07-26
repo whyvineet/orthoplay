@@ -1,14 +1,18 @@
-import { useState, useEffect, useCallback } from "react";
-import StartPage from "./pages/StartPage";
-import GamePage from "./pages/GamePage";
-import CompletePage from "./pages/CompletePage";
-import ErrorMessage from "./components/ErrorMessage";
-import { apiService } from "./services/apiService";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ContributorsPage from "./pages/ContributorsPage";
+import { useState, useEffect, useCallback } from 'react';
+import StartPage from './pages/StartPage';
+import GamePage from './pages/GamePage';
+import CompletePage from './pages/CompletePage';
+import ErrorMessage from './components/ErrorMessage';
+import { apiService } from './services/apiService';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ContributorsPage from './pages/ContributorsPage';
+import HowToPlay from './pages/HowToPlay';
+import AboutPage from './pages/AboutPage';
+
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState("start"); // 'start', 'playing', 'complete'
@@ -226,7 +230,8 @@ const OrthoplayGame = () => {
   };
 
   return (
-    <>
+    <BrowserRouter>
+
       {errorMessage && (
         <ErrorMessage
           message={errorMessage}
@@ -236,28 +241,28 @@ const OrthoplayGame = () => {
 
       <Navigation apiStatus={apiStatus} />
 
-      <main className="min-h-screen">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/our-contributors" element={<ContributorsPage />} />
-            <Route
-              path="/"
-              element={
-                gameState === "start" ? (
-                  <StartPage {...gameProps} />
-                ) : gameState === "playing" ? (
-                  <GamePage {...gameProps} />
-                ) : gameState === "complete" ? (
-                  <CompletePage {...gameProps} />
-                ) : null
-              }
-            />
-          </Routes>
-        </BrowserRouter>
+      <main className='min-h-screen'>
+        <Routes>
+          <Route path="/our-contributors" element={<ContributorsPage />} />
+          <Route path="/how-to-play" element={<HowToPlay />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/"
+            element={
+              gameState === 'start' ? (
+                <StartPage {...gameProps} />
+              ) : gameState === 'playing' ? (
+                <GamePage {...gameProps} />
+              ) : gameState === 'complete' ? (
+                <CompletePage {...gameProps} />
+              ) : null
+            }
+          />
+        </Routes>
       </main>
 
       <Footer />
-    </>
+    </BrowserRouter>
   );
 };
 
