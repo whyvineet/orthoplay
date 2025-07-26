@@ -7,7 +7,9 @@ Orthoplay is a fun, educational web-based game designed to help users improve th
 ## 🔗 Project Demo
 
 Check out how Orthoplay works in this short demo:
-![Orthoplay Demo](https://your-demo-gif-link-here.com)
+
+![demo.jpg](./frontend/public/demo.jpg)
+---
 *Or try it live here: [Live Demo](https://your-live-link-if-available.com)*
 
 ---
