@@ -26,6 +26,12 @@ class WordService:
         """Get word data including description and sentence."""
         return self.words.get(word, {})
 
+    def get_random_word_by_difficulty(self, difficulty):
+        filtered = [word for word, data in self.words.items() if data.get('difficulty') == difficulty]
+        if not filtered:
+            raise Exception(f"No words found for difficulty: {difficulty}")
+        return random.choice(filtered)
+
 
 class GameService:
     """Service for game logic."""
@@ -34,9 +40,9 @@ class GameService:
         self.word_service = WordService()
         self.game_sessions = {}
     
-    def start_game(self) -> Dict:
+    def start_game(self, difficulty='medium'):
         """Start a new game session."""
-        word = self.word_service.get_random_word()
+        word = self.word_service.get_random_word_by_difficulty(difficulty)
         session_id = f"game_{random.randint(1000, 9999)}"
         
         self.game_sessions[session_id] = {
