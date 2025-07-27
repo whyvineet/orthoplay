@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
+import HowToPlay from './pages/HowToPlay';
+import AboutPage from './pages/AboutPage';
 
 
 const OrthoplayGame = () => {
@@ -211,7 +213,8 @@ const OrthoplayGame = () => {
   };
 
   return (
-    <>
+    <BrowserRouter>
+
       {errorMessage && (
         <ErrorMessage
           message={errorMessage}
@@ -222,28 +225,28 @@ const OrthoplayGame = () => {
       <Navigation apiStatus={apiStatus} />
 
       <main className='min-h-screen'>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/our-contributors" element={<ContributorsPage />} />
-            <Route
-              path="/"
-              element={
-                gameState === 'start' ? (
-                  <StartPage {...gameProps} />
-                ) : gameState === 'playing' ? (
-                  <GamePage {...gameProps} />
-                ) : gameState === 'complete' ? (
-                  <CompletePage {...gameProps} />
-                ) : null
-              }
-            />
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path="/our-contributors" element={<ContributorsPage />} />
+          <Route path="/how-to-play" element={<HowToPlay />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/"
+            element={
+              gameState === 'start' ? (
+                <StartPage {...gameProps} />
+              ) : gameState === 'playing' ? (
+                <GamePage {...gameProps} />
+              ) : gameState === 'complete' ? (
+                <CompletePage {...gameProps} />
+              ) : null
+            }
+          />
+        </Routes>
 
       </main>
 
       <Footer />
-    </>
+    </BrowserRouter>
   );
 };
 
