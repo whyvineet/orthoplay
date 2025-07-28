@@ -3,7 +3,7 @@ name: Bug report
 about: Report something that isn’t working correctly in Orthoplay
 title: "[BUG]"
 labels: bug
-assignees: whyvineet
+assignees: ''
 
 ---
 
