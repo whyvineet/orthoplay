@@ -2,7 +2,7 @@ import { Volume2, CheckCircle, XCircle } from "lucide-react";
 
 const StartPage = ({ isLoading, startGame, apiStatus }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br pt-12 from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br pt-12 from-slate-50 to-blue-50 pb-12">
       <div className="container mx-auto">
         <header className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">
@@ -24,7 +24,7 @@ const StartPage = ({ isLoading, startGame, apiStatus }) => {
 
         {/* Start Game Card */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-12 text-center">
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-12 text-center m-5">
             <div className="mb-8">
               <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-full mb-6">
                 <Volume2 className="h-10 w-10 text-blue-600" />
@@ -36,25 +36,25 @@ const StartPage = ({ isLoading, startGame, apiStatus }) => {
                 Listen to the word, guess its length, then spell it correctly!
               </p>
             </div>
-
-            <button
-              onClick={startGame}
-              disabled={isLoading}
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-2xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed min-w-48"
-            >
-              {isLoading ? "Starting..." : "Start Game"}
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={startGame}
+                disabled={isLoading}
+                className="px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-2xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed min-w-48"
+              >
+                {isLoading ? "Starting..." : "Start Game"}
+              </button>
+            </div>
 
             {/* API Status */}
             <div className="mt-8 pt-6 border-t border-gray-100">
               <div className="flex items-center justify-center text-sm">
                 <span className="text-gray-500 mr-2">API Status:</span>
                 <span
-                  className={`flex items-center font-medium ${
-                    apiStatus === "connected"
+                  className={`flex items-center font-medium ${apiStatus === "connected"
                       ? "text-green-600"
                       : "text-red-600"
-                  }`}
+                    }`}
                 >
                   {apiStatus === "connected" ? (
                     <CheckCircle className="h-4 w-4 mr-1" />
