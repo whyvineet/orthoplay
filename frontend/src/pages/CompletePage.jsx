@@ -1,6 +1,7 @@
-import { Volume2, RotateCcw, Trophy, Frown } from "lucide-react";
-import { useState, useEffect } from "react";
-import { ttsService } from "../services/ttsService.js";
+import { Volume2, RotateCcw, Trophy, Frown } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ttsService } from '../services/ttsService.js';
+import { ArrowRight } from 'lucide-react';
 
 const CompletePage = ({
   isWinner,
@@ -19,7 +20,7 @@ const CompletePage = ({
 
   const playAudio = async () => {
     if (!speechSupported) {
-      alert("Text-to-Speech is not supported in your browser");
+      alert('Text-to-Speech is not supported in your browser');
       return;
     }
 
@@ -41,13 +42,12 @@ const CompletePage = ({
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Orthoplay</h1>
         </header>
-
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-12 text-center">
             <div className="mb-8">
               <div
                 className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 ${
-                  isWinner ? "bg-green-100" : "bg-orange-100"
+                  isWinner ? 'bg-green-100' : 'bg-orange-100'
                 }`}
               >
                 {isWinner ? (
@@ -57,7 +57,7 @@ const CompletePage = ({
                 )}
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                {isWinner ? "Congratulations!" : "Better luck next time!"}
+                {isWinner ? 'Congratulations!' : 'Better luck next time!'}
               </h2>
             </div>
 
@@ -99,8 +99,9 @@ const CompletePage = ({
               onClick={resetGame}
               className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-2xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              <RotateCcw className="h-5 w-5 mr-2" />
-              Play Again
+             <ArrowRight className="h-5 w-5 mr-2" />
+
+              Next Word
             </button>
           </div>
         </div>
