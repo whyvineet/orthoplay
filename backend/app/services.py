@@ -14,7 +14,7 @@ class WordService:
     
     def _load_words(self) -> Dict:
         """Load words from JSON file."""
-        words_file = os.path.join(os.path.dirname(__file__), "..", "data", "words_with_hint.json")
+        words_file = os.path.join(os.path.dirname(__file__), "..", "data", "words.json")
         with open(words_file, 'r') as f:
             return json.load(f)
     
@@ -24,7 +24,6 @@ class WordService:
     
     def get_word_data(self, word: str) -> Dict:
         """Get word data including description and sentence."""
-        # print(self.words.get(word, {}))
         return self.words.get(word, {})
 
 

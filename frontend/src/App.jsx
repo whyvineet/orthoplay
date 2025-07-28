@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from 'react';
 import StartPage from './pages/StartPage';
 import GamePage from './pages/GamePage';
@@ -14,30 +13,25 @@ import HowToPlay from './pages/HowToPlay';
 import AboutPage from './pages/AboutPage';
 
 const OrthoplayGame = () => {
-  const [gameState, setGameState] = useState("start"); // 'start', 'playing', 'complete'
-  const [gamePhase, setGamePhase] = useState("length"); // 'length', 'spelling'
+  const [gameState, setGameState] = useState('start');
+  const [gamePhase, setGamePhase] = useState('length');
   const [isLoading, setIsLoading] = useState(false);
   const [currentGame, setCurrentGame] = useState({
-    wordId: "",
-    word: "",
-    description: "",
-    hint1: "",
-    hint2: "",
-    hint3: "",
+    wordId: '',
+    word: '',
+    description: '',
     lengthOptions: [],
   });
-
   const [lengthFeedback, setLengthFeedback] = useState(null);
-  const [currentGuess, setCurrentGuess] = useState("");
+  const [currentGuess, setCurrentGuess] = useState('');
   const [spellingHistory, setSpellingHistory] = useState([]);
   const [attempts, setAttempts] = useState(0);
-  const [numberOfHints, setNumberOfHints] = useState(0);
-  const [lastMessage, setLastMessage] = useState("");
-  const [correctWord, setCorrectWord] = useState("");
-  const [exampleSentence, setExampleSentence] = useState("");
+  const [lastMessage, setLastMessage] = useState('');
+  const [correctWord, setCorrectWord] = useState('');
+  const [exampleSentence, setExampleSentence] = useState('');
   const [isWinner, setIsWinner] = useState(false);
-  const [apiStatus, setApiStatus] = useState("unknown");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [apiStatus, setApiStatus] = useState('unknown');
+  const [errorMessage, setErrorMessage] = useState('');
   const [wordLength, setWordLength] = useState(0);
 
 
@@ -46,10 +40,10 @@ const OrthoplayGame = () => {
   const checkApiStatus = useCallback(async () => {
     try {
       const status = await apiService.checkHealth();
-      setApiStatus(status ? "connected" : "disconnected");
+      setApiStatus(status ? 'connected' : 'disconnected');
     } catch (error) {
-      setApiStatus("disconnected");
-      console.error("API connection failed:", error);
+      setApiStatus('disconnected');
+      console.error('API connection failed:', error);
     }
   }, []);
 
@@ -59,12 +53,12 @@ const OrthoplayGame = () => {
 
   const showError = (message) => {
     setErrorMessage(message);
-    setTimeout(() => setErrorMessage(""), 10000);
+    setTimeout(() => setErrorMessage(''), 10000);
   };
 
   const startGame = async () => {
     setIsLoading(true);
-    setErrorMessage("");
+    setErrorMessage('');
 
     try {
       const data = await apiService.startGame();
@@ -73,16 +67,13 @@ const OrthoplayGame = () => {
         word: data.word,
         description: data.description,
         lengthOptions: data.length_options,
-        hint1: data.hint1,
-        hint2: data.hint2,
-        hint3: data.hint3,
       });
 
-      setGameState("playing");
-      setGamePhase("length");
+      setGameState('playing');
+      setGamePhase('length');
       resetGameData();
     } catch (error) {
-      console.error("Error starting game:", error);
+      console.error('Error starting game:', error);
       showError(`Failed to start game: ${error.message}`);
     } finally {
       setIsLoading(false);
@@ -91,7 +82,7 @@ const OrthoplayGame = () => {
 
   const guessLength = async (length) => {
     setIsLoading(true);
-    setErrorMessage("");
+    setErrorMessage('');
 
     try {
       const data = await apiService.guessLength(currentGame.wordId, length);
@@ -102,11 +93,11 @@ const OrthoplayGame = () => {
 
       if (data.is_correct) {
         setWordLength(data.word_length);
-        setGamePhase("spelling");
-        setCurrentGuess("");
+        setGamePhase('spelling');
+        setCurrentGuess('');
       }
     } catch (error) {
-      console.error("Error guessing length:", error);
+      console.error('Error guessing length:', error);
       showError(`Failed to guess length: ${error.message}`);
     } finally {
       setIsLoading(false);
@@ -115,7 +106,7 @@ const OrthoplayGame = () => {
 
   const submitSpelling = async () => {
     if (!currentGuess.trim()) {
-      showError("Please enter a guess");
+      showError('Please enter a guess');
       return;
     }
 
@@ -125,22 +116,16 @@ const OrthoplayGame = () => {
     }
 
     setIsLoading(true);
-    setErrorMessage("");
+    setErrorMessage('');
 
     try {
-      const data = await apiService.submitSpelling(
-        currentGame.wordId,
-        currentGuess
-      );
-      setSpellingHistory((prev) => [
-        ...prev,
-        {
-          guess: currentGuess,
-          feedback: data.feedback,
-        },
-      ]);
+      const data = await apiService.submitSpelling(currentGame.wordId, currentGuess);
+      setSpellingHistory(prev => [...prev, {
+        guess: currentGuess,
+        feedback: data.feedback,
+      }]);
 
-      setAttempts((prev) => prev + 1);
+      setAttempts(prev => prev + 1);
       setLastMessage(data.message);
 
       if (data.is_correct) {
@@ -149,13 +134,14 @@ const OrthoplayGame = () => {
         setIsWinner(true);
         setGameState('complete');
 
+        // Play feedback sound
         correctAudio.play().catch(err => console.error('Correct sound error:', err));
     
       }
 
-      setCurrentGuess("");
+      setCurrentGuess('');
     } catch (error) {
-      console.error("Error submitting spelling:", error);
+      console.error('Error submitting spelling:', error);
       showError(`Failed to submit spelling: ${error.message}`);
     } finally {
       setIsLoading(false);
@@ -164,7 +150,7 @@ const OrthoplayGame = () => {
 
   const revealAnswer = async () => {
     setIsLoading(true);
-    setErrorMessage("");
+    setErrorMessage('');
 
     try {
       const data = await apiService.revealAnswer(currentGame.wordId);
@@ -172,9 +158,9 @@ const OrthoplayGame = () => {
       setExampleSentence(data.example_sentence);
       setIsWinner(false);
       setLastMessage(data.message);
-      setGameState("complete");
+      setGameState('complete');
     } catch (error) {
-      console.error("Error revealing answer:", error);
+      console.error('Error revealing answer:', error);
       showError(`Failed to reveal answer: ${error.message}`);
     } finally {
       setIsLoading(false);
@@ -182,29 +168,29 @@ const OrthoplayGame = () => {
   };
 
   const resetGame = () => {
-    setGameState("start");
-    setGamePhase("length");
+    setGameState('start');
+    setGamePhase('length');
     resetGameData();
     resetCurrentGame();
   };
 
   const resetGameData = () => {
     setLengthFeedback(null);
-    setCurrentGuess("");
+    setCurrentGuess('');
     setSpellingHistory([]);
     setAttempts(0);
-    setLastMessage("");
-    setCorrectWord("");
-    setExampleSentence("");
+    setLastMessage('');
+    setCorrectWord('');
+    setExampleSentence('');
     setIsWinner(false);
     setWordLength(0);
   };
 
   const resetCurrentGame = () => {
     setCurrentGame({
-      wordId: "",
-      word: "",
-      description: "",
+      wordId: '',
+      word: '',
+      description: '',
       lengthOptions: [],
     });
   };
@@ -219,7 +205,6 @@ const OrthoplayGame = () => {
     setCurrentGuess,
     spellingHistory,
     attempts,
-    numberOfHints,
     lastMessage,
     correctWord,
     exampleSentence,
@@ -231,7 +216,6 @@ const OrthoplayGame = () => {
     submitSpelling,
     revealAnswer,
     resetGame,
-    setNumberOfHints,
   };
 
   return (
@@ -239,7 +223,7 @@ const OrthoplayGame = () => {
       {errorMessage && (
         <ErrorMessage
           message={errorMessage}
-          onClose={() => setErrorMessage("")}
+          onClose={() => setErrorMessage('')}
         />
       )}
 
