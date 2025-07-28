@@ -58,6 +58,38 @@ const AudioPlayer = ({ currentGame }) => {
         }
     };
 
+    const playSlowAudio = async () => {
+        if (!speechSupported) {
+            alert('Text-to-Speech is not supported in your browser');
+            return;
+        }
+
+        if (!currentGame.word) {
+            console.error('No word available for TTS. Current game:', currentGame);
+            alert('Word not available for playback');
+            return;
+        }
+
+        console.log('Playing word slowly:', currentGame.word);
+
+        try {
+            await ttsService.speak(currentGame.word, {
+                rate: 0.1, // slowed speech
+                onStart: () => setIsPlayingAudio(true),
+                onEnd: () => setIsPlayingAudio(false),
+                onError: (error) => {
+                    console.error('TTS error (slow):', error);
+                    setIsPlayingAudio(false);
+                    alert('Slow playback failed. Please try again.');
+                }
+            });
+        } catch (error) {
+            console.error('TTS error (slow):', error);
+            setIsPlayingAudio(false);
+            alert('Failed to play audio slowly. Please try again.');
+        }
+    };
+
     const stopAudio = () => {
         ttsService.stop();
         setIsPlayingAudio(false);
@@ -90,6 +122,16 @@ const AudioPlayer = ({ currentGame }) => {
                                 <Play className="h-5 w-5 mr-2" />
                                 {isPlayingAudio ? 'Playing...' : 'Play Word'}
                             </button>
+
+                            <button
+                                onClick={playSlowAudio}
+                                disabled={isPlayingAudio || !currentGame.word}
+                                className="inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-white text-lg font-semibold rounded-2xl hover:bg-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <Play className="h-5 w-5 mr-2" />
+                                Play Slow
+                            </button>
+
                             
                             {isPlayingAudio && (
                                 <button
