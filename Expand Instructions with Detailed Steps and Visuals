@@ -1,0 +1,52 @@
+## 🎮 Enhanced: "How to Play Orthoplay" Section
+
+This PR expands the onboarding guide for new users by:
+
+- ✅ Adding a full walkthrough of gameplay
+- ✅ Including step-by-step instructions
+- ✅ Adding 3-step visual images
+- ✅ Providing tips and examples
+- ✅ CTA to begin playing right after
+
+<h2 class="text-2xl font-bold text-gray-800 mb-3">🎮 What is Orthoplay?</h2>
+<p class="text-gray-600 mb-6">
+Orthoplay is a fast-paced, word-based puzzle game where players arrange scrambled letters to form correct English words before time runs out. Each correct word earns points. The faster you solve, the more you score!
+</p>
+<h2 class="text-xl font-semibold text-gray-800 mb-4">📝 How to Play: Step-by-Step</h2>
+<ol class="list-decimal list-inside text-gray-700 space-y-3">
+  <li><strong>Start a New Game:</strong> Click “Play Now” to launch a new session.</li>
+  <li><strong>See the Scrambled Word:</strong> You’ll see jumbled letters on the screen like <code>B A N L K</code>.</li>
+  <li><strong>Drag & Drop or Type:</strong> Rearrange the letters to form a valid word like <strong>BLANK</strong>.</li>
+  <li><strong>Submit Your Answer:</strong> Press Enter or tap Submit to lock your answer.</li>
+  <li><strong>Timer is Ticking:</strong> You have <strong>30 seconds</strong> for each word. Score more by being quick!</li>
+  <li><strong>Streak Bonus:</strong> Solving multiple words in a row increases your multiplier bonus.</li>
+</ol>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+  <div class="text-center">
+    <img src="/images/step1-scrambled.png" alt="Step 1: Scrambled Word" class="rounded-xl shadow-md mb-2" />
+    <p class="text-gray-600">Step 1: You see a scrambled word (e.g., <code>O R D W</code>)</p>
+  </div>
+  <div class="text-center">
+    <img src="/images/step2-reorder.png" alt="Step 2: Arrange Letters" class="rounded-xl shadow-md mb-2" />
+    <p class="text-gray-600">Step 2: Drag the letters to form <strong>WORD</strong></p>
+  </div>
+  <div class="text-center">
+    <img src="/images/step3-score.png" alt="Step 3: Submit and Score" class="rounded-xl shadow-md mb-2" />
+    <p class="text-gray-600">Step 3: Submit it & earn points before time runs out!</p>
+  </div>
+</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-2">💡 Pro Tips</h3>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+  <li>Look for common prefixes and suffixes (e.g., “-ing”, “re-”)</li>
+  <li>Use the shuffle button if you’re stuck</li>
+  <li>Typing is faster than dragging on desktop!</li>
+  <li>Don’t guess – incorrect attempts cost time!</li>
+</ul>
+<div class="mt-6">
+  <a href="/play" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-700 transition">
+    🚀 Ready to Play Your First Game?
+  </a>
+</div>
+
+
+
