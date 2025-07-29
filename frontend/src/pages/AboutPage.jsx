@@ -1,5 +1,10 @@
 import { Github, UserRoundCheck } from 'lucide-react';
 import { Link } from 'react-router-dom'
+import ProgressChart from '../components/ProgressChart';
+import PlanGenerator from '../components/PlanGenerator';
+import VoiceGuideToggle from '../components/VoiceGuideToggle';
+import { useState, useEffect } from 'react';
+import { getProgress, addProgressEntry } from '../utils/progress';
 
 const AboutPage = () => {
     const featuresCard = [
@@ -98,7 +103,25 @@ const AboutPage = () => {
                 </div>
             </section>
 
-
+            {/* Feature Preview Section */}
+            <section className="max-w-5xl mx-auto flex flex-col gap-8 mt-24 px-2">
+                <h2 className="text-2xl font-bold mb-4">Feature Preview: Rehab Tools</h2>
+                {/* Progress Tracker Demo */}
+                <div className="mb-8">
+                    <h3 className="text-xl font-semibold mb-2">Patient Progress Tracker</h3>
+                    <DemoProgressTracker />
+                </div>
+                {/* Plan Generator Demo */}
+                <div className="mb-8">
+                    <h3 className="text-xl font-semibold mb-2">Personalized Exercise Plan Generator</h3>
+                    <PlanGenerator />
+                </div>
+                {/* Voice Guide Demo */}
+                <div className="mb-8">
+                    <h3 className="text-xl font-semibold mb-2">Voice-Guided Exercise Mode</h3>
+                    <VoiceGuideToggle />
+                </div>
+            </section>
 
 
             {/* <section className="flex flex-col justify-center items-center mx-4 md:mx-20 gap-4 md:gap-10 ">
@@ -130,6 +153,27 @@ const AboutPage = () => {
 
         </div>
     )
+}
+
+// DemoProgressTracker component for AboutPage only
+function DemoProgressTracker() {
+    const [progress, setProgress] = useState([]);
+    useEffect(() => {
+        setProgress(getProgress());
+    }, []);
+    // For demo: add a random entry for today
+    const addToday = () => {
+        const today = new Date().toISOString().slice(0, 10);
+        const completed = Math.floor(Math.random() * 6);
+        addProgressEntry(today, completed);
+        setProgress(getProgress());
+    };
+    return (
+        <div>
+            <button onClick={addToday} className="mb-2 px-4 py-2 bg-blue-500 text-white rounded">Add Random Progress for Today</button>
+            <ProgressChart progressData={progress.slice(-7)} />
+        </div>
+    );
 }
 
 export default AboutPage;
