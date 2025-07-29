@@ -119,7 +119,7 @@ const SpellingGame = ({
                                 type="text"
                                 maxLength={1}
                                 disabled={isLoading}
-                                className="w-10 h-10 md:w-14 md:h-14 border-2 border-gray-300 rounded-lg flex items-center justify-center text-2xl font-bold text-gray-900 bg-white focus:outline-none focus:border-blue-500 text-center uppercase"
+                                className="w-10 h-10 md:w-14 md:h-14 border-2 border-gray-300 rounded-lg flex items-center justify-center text-2xl font-bold text-gray-900 bg-white focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 text-center uppercase transition-all duration-200 hover:border-blue-400 hover:shadow-md hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
                             />
                         ))}
                     </div>
@@ -138,9 +138,9 @@ const SpellingGame = ({
                             }, 0);
                         }}
                         disabled={isLoading || guess.includes('')}
-                        className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-md active:scale-95"
                     >
-                        <Send className="h-5 w-5 mr-2" />
+                        <Send className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
                         {isLoading ? 'Checking...' : 'Submit'}
                     </button>
 
@@ -148,9 +148,9 @@ const SpellingGame = ({
                     <button
                         onClick={revealAnswer}
                         disabled={isLoading}
-                        className="inline-flex items-center justify-center px-6 py-3 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="inline-flex items-center justify-center px-6 py-3 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-md active:scale-95"
                     >
-                        <Eye className="h-5 w-5 mr-2" />
+                        <Eye className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:scale-110" />
                         Give Up
                     </button>
                 </div>
