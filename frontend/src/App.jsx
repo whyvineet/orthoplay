@@ -12,10 +12,9 @@ import ContributorsPage from './pages/ContributorsPage';
 import HowToPlay from './pages/HowToPlay';
 import AboutPage from './pages/AboutPage';
 
-
 const OrthoplayGame = () => {
-  const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'
-  const [gamePhase, setGamePhase] = useState('length'); // 'length', 'spelling'
+  const [gameState, setGameState] = useState('start');
+  const [gamePhase, setGamePhase] = useState('length');
   const [isLoading, setIsLoading] = useState(false);
   const [currentGame, setCurrentGame] = useState({
     wordId: '',
@@ -34,6 +33,9 @@ const OrthoplayGame = () => {
   const [apiStatus, setApiStatus] = useState('unknown');
   const [errorMessage, setErrorMessage] = useState('');
   const [wordLength, setWordLength] = useState(0);
+
+
+  const correctAudio = new Audio('/sounds/correct.mp3');
 
   const checkApiStatus = useCallback(async () => {
     try {
@@ -131,6 +133,10 @@ const OrthoplayGame = () => {
         setExampleSentence(data.example_sentence);
         setIsWinner(true);
         setGameState('complete');
+
+        // Play feedback sound
+        correctAudio.play().catch(err => console.error('Correct sound error:', err));
+    
       }
 
       setCurrentGuess('');
@@ -238,7 +244,6 @@ const OrthoplayGame = () => {
 
   return (
     <BrowserRouter>
-
       {errorMessage && (
         <ErrorMessage
           message={errorMessage}
@@ -248,9 +253,14 @@ const OrthoplayGame = () => {
 
       <Navigation apiStatus={apiStatus} />
 
+
       <main className='min-h-screen'>
 
                <Routes>
+
+      <main className="min-h-screen">
+        <Routes>
+
           <Route path="/our-contributors" element={<ContributorsPage />} />
           <Route path="/how-to-play" element={<HowToPlay />} />
           <Route path="/about" element={<AboutPage />} />
@@ -276,3 +286,4 @@ const OrthoplayGame = () => {
 
 
 export default OrthoplayGame;
+
