@@ -5,7 +5,11 @@ function Hints({ hints, numberOfHints, setNumberOfHints }) {
   const [hint, setHint] = useState(null);
 
   useEffect(() => {
-    setHint(hints[`hint${numberOfHints}`]);
+    if (numberOfHints === 0) {
+      setHint(null); // No hint to display when numberOfHints is 0
+    } else {
+      setHint(hints[`hint${numberOfHints}`]);
+    }
     console.log(hints);
     console.log(hint);
   }, [numberOfHints, setNumberOfHints, hints]);
