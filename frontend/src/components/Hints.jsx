@@ -6,7 +6,7 @@ function Hints({ hints, numberOfHints, setNumberOfHints }) {
 
   useEffect(() => {
     setHint(hints[`hint${numberOfHints}`]);
-  }, [numberOfHints]);
+  }, [numberOfHints, hints]);
 
   return (
     <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8">
