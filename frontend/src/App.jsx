@@ -6,14 +6,12 @@ import ErrorMessage from './components/ErrorMessage';
 import { apiService } from './services/apiService';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
 
-
-const OrthoplayGame = () => {
-  const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'
-  const [gamePhase, setGamePhase] = useState('length'); // 'length', 'spelling'
+const App = () => {
+  const [gameState, setGameState] = useState('start');
+  const [gamePhase, setGamePhase] = useState('length');
   const [isLoading, setIsLoading] = useState(false);
   const [currentGame, setCurrentGame] = useState({
     wordId: '',
@@ -32,6 +30,32 @@ const OrthoplayGame = () => {
   const [apiStatus, setApiStatus] = useState('unknown');
   const [errorMessage, setErrorMessage] = useState('');
   const [wordLength, setWordLength] = useState(0);
+  const [score, setScore] = useState(0);
+  const [lastMedalScore, setLastMedalScore] = useState(0);
+
+  useEffect(() => {
+    console.log('App rendered');
+  }, []);
+
+  const handleSubmit = async () => {
+    if (currentGuess === correctWord) {
+      setIsWinner(true);
+      setScore((prev) => prev + 10);
+    } else {
+      setScore((prev) => Math.max(prev - 5, 0));
+    }
+    setAttempts((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    if (score >= 100 && lastMedalScore < 100) {
+      setLastMedalScore(100);
+    } else if (score >= 150 && lastMedalScore < 150) {
+      setLastMedalScore(150);
+    } else if (score >= 200 && lastMedalScore < 200) {
+      setLastMedalScore(200);
+    }
+  }, [score, lastMedalScore]);
 
   const checkApiStatus = useCallback(async () => {
     try {
@@ -129,6 +153,9 @@ const OrthoplayGame = () => {
         setExampleSentence(data.example_sentence);
         setIsWinner(true);
         setGameState('complete');
+        setScore(prev => prev + 10);
+      } else {
+        setScore(prev => Math.max(prev - 5, 0));
       }
 
       setCurrentGuess('');
@@ -151,6 +178,7 @@ const OrthoplayGame = () => {
       setIsWinner(false);
       setLastMessage(data.message);
       setGameState('complete');
+      setScore(prev => Math.max(prev - 5, 0));
     } catch (error) {
       console.error('Error revealing answer:', error);
       showError(`Failed to reveal answer: ${error.message}`);
@@ -160,10 +188,11 @@ const OrthoplayGame = () => {
   };
 
   const resetGame = () => {
-    setGameState('start');
+    setGameState('playing');
     setGamePhase('length');
     resetGameData();
     resetCurrentGame();
+    startGame();
   };
 
   const resetGameData = () => {
@@ -187,6 +216,11 @@ const OrthoplayGame = () => {
     });
   };
 
+  const resetScore = () => {
+    setScore(0);
+    setLastMedalScore(0);
+  };
+
   const gameProps = {
     gameState,
     gamePhase,
@@ -208,6 +242,8 @@ const OrthoplayGame = () => {
     submitSpelling,
     revealAnswer,
     resetGame,
+    score,
+    onScoreReset: resetScore,
   };
 
   return (
@@ -239,12 +275,11 @@ const OrthoplayGame = () => {
             />
           </Routes>
         </BrowserRouter>
-
       </main>
 
       <Footer />
-    </>
+    // </>
   );
 };
 
-export default OrthoplayGame;
+export default App;
