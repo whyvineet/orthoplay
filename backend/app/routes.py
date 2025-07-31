@@ -74,8 +74,7 @@ async def start_game(request: GameStartRequest):
         word_data = game_data["word_data"]
         
         length_options = game_service.generate_length_options(len(game_data["word"]))
-        # print("--------------------------------")
-        # print(word_data)
+# Removed unnecessary commented-out debug print statements.
         return GameStartResponse(
             word_id=game_data["session_id"],
             word=game_data["word"],
