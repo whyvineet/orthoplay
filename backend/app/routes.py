@@ -199,7 +199,7 @@ async def get_game_stats(word_id: str):
         raise HTTPException(status_code=500, detail=f"Failed to get game stats: {str(e)}")
 
 # Load Gemini API key
-configure(api_key="AIzaSyDrtgNN9qKg_zDI9J8FnlMs97N5CeQCYv4")
+configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 class ChatRequest(BaseModel):
     message: str
