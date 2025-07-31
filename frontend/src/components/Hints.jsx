@@ -6,6 +6,7 @@ function Hints({ hints, numberOfHints, setNumberOfHints }) {
 
   useEffect(() => {
     setHint(hints[`hint${numberOfHints}`]);
+    console.log(hints);
     console.log(hint);
   }, [numberOfHints, setNumberOfHints, hints]);
 
