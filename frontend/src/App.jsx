@@ -9,7 +9,13 @@ import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
 
+
 const App = () => {
+import HowToPlay from './pages/HowToPlay';
+import AboutPage from './pages/AboutPage';
+import { ToastContainer } from 'react-toastify'
+
+const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start');
   const [gamePhase, setGamePhase] = useState('length');
   const [isLoading, setIsLoading] = useState(false);
@@ -56,6 +62,9 @@ const App = () => {
       setLastMedalScore(200);
     }
   }, [score, lastMedalScore]);
+
+
+  const correctAudio = new Audio('/sounds/correct.mp3');
 
   const checkApiStatus = useCallback(async () => {
     try {
@@ -156,6 +165,10 @@ const App = () => {
         setScore(prev => prev + 10);
       } else {
         setScore(prev => Math.max(prev - 5, 0));
+
+        // Play feedback sound
+        correctAudio.play().catch(err => console.error('Correct sound error:', err));
+  
       }
 
       setCurrentGuess('');
@@ -247,7 +260,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <BrowserRouter>
       {errorMessage && (
         <ErrorMessage
           message={errorMessage}
@@ -283,3 +296,30 @@ const App = () => {
 };
 
 export default App;
+      <main className="min-h-screen">
+        <Routes>
+          <Route path="/our-contributors" element={<ContributorsPage />} />
+          <Route path="/how-to-play" element={<HowToPlay />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/"
+            element={
+              gameState === 'start' ? (
+                <StartPage {...gameProps} />
+              ) : gameState === 'playing' ? (
+                <GamePage {...gameProps} />
+              ) : gameState === 'complete' ? (
+                <CompletePage {...gameProps} />
+              ) : null
+            }
+          />
+        </Routes>
+      </main>
+
+      <Footer />
+      <ToastContainer position="top-center" autoClose={3000}/>
+    </BrowserRouter>
+  );
+};
+
+export default OrthoplayGame;
