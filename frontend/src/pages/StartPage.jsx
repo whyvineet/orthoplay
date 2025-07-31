@@ -1,4 +1,5 @@
 import { Volume2, CheckCircle, XCircle } from "lucide-react";
+import Chatbot from "../components/Chatbot";
 
 const StartPage = ({ isLoading, startGame, apiStatus }) => {
   return (
@@ -69,6 +70,7 @@ const StartPage = ({ isLoading, startGame, apiStatus }) => {
         </div>
 
       </div>
+      <Chatbot />
     </div>
   );
 };
