@@ -3,6 +3,7 @@ import { Lightbulb } from "lucide-react";
 
 function Hints({ hints, numberOfHints, setNumberOfHints }) {
   const [hint, setHint] = useState(null);
+  numberOfHints = 0;
 
   useEffect(() => {
     setHint(hints[`hint${numberOfHints}`]);
