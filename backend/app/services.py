@@ -24,7 +24,6 @@ class WordService:
     
     def get_word_data(self, word: str) -> Dict:
         """Get word data including description and sentence."""
-        # print(self.words.get(word, {}))
         return self.words.get(word, {})
 
 
