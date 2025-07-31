@@ -39,14 +39,14 @@ const GamePage = ({
         {/* Error Message */}
         {errorMessage && (
           <div className="max-w-4xl mx-auto mb-6">
-            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-center shadow-sm">
-              <AlertCircle className="h-5 w-5 text-red-500 mr-3" />
+            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300">
+              <AlertCircle className="h-5 w-5 text-red-500 mr-3 transition-transform duration-300 hover:scale-110" />
               <span className="text-red-800 text-sm flex-1">{errorMessage}</span>
               <button
                 onClick={() => setErrorMessage('')}
-                className="text-red-500 hover:text-red-700 ml-2"
+                className="text-red-500 hover:text-red-700 ml-2 p-1 rounded-lg hover:bg-red-100 transition-all duration-200"
               >
-                <XCircle className="h-5 w-5" />
+                <XCircle className="h-5 w-5 transition-transform duration-300 hover:scale-110" />
               </button>
             </div>
           </div>

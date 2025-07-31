@@ -26,7 +26,7 @@ const ContributorsPage = () => {
     const finalContributors = contributors.sort((a, b) => b.contributions - a.contributions);
     return (
         <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-12 px-4 min-h-screen mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">
+            <h2 className="text-3xl font-bold text-center mb-8 transition-colors duration-300 hover:text-blue-600">
                 Meet Our Contributors 💖
             </h2>
 
@@ -45,7 +45,7 @@ const ContributorsPage = () => {
                     ))}
                 </div>
             ) : isError ? (
-                <p className="text-center text-red-500">
+                <p className="text-center text-red-500 transition-colors duration-300 hover:text-red-600">
                     Couldn't load contributors. Please try again later.
                 </p>
             ) : (
@@ -53,19 +53,19 @@ const ContributorsPage = () => {
                     {finalContributors.map((user) => (
                         <div
                             key={user.login}
-                            className="relative overflow-hidden bg-white rounded-xl shadow-md hover:shadow-lg transition flex flex-col items-center pt-6 pb-0 text-center space-y-4 group"
+                            className="relative overflow-hidden bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col items-center pt-6 pb-0 text-center space-y-4 group hover:scale-[1.02]"
                         >
 
                             <img
                                 src={user.avatar_url}
                                 alt={user.login}
-                                className=" w-20 h-20 rounded-lg border shadow-md bg-white"
+                                className="w-20 h-20 rounded-lg border shadow-md bg-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                             />
 
                             {/* Username & Contributions */}
                             <div className="">
-                                <h3 className="text-lg font-semibold">@{user.login}</h3>
-                                <p className="mt-2 text-sm text-gray-600 bg-amber-100 rounded-3xl inline-block px-4 py-1.5 font-medium">
+                                <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:text-blue-600">@{user.login}</h3>
+                                <p className="mt-2 text-sm text-gray-600 bg-amber-100 rounded-3xl inline-block px-4 py-1.5 font-medium transition-all duration-300 group-hover:bg-amber-200 group-hover:scale-105">
                                     {user.contributions} {user.contributions > 1 ? 'contributions' : 'contribution'}
                                 </p>
                             </div>
@@ -75,9 +75,9 @@ const ContributorsPage = () => {
                                 href={user.html_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className=" flex justify-center items-center w-full h-12 bg-gray-900 text-white rounded-b-xl gap-x-2 font-medium hover:bg-black transition-colors"
+                                className="flex justify-center items-center w-full h-12 bg-gray-900 text-white rounded-b-xl gap-x-2 font-medium hover:bg-black hover:scale-105 transition-all duration-300 group-hover:shadow-lg"
                             >
-                                <Github />
+                                <Github className="transition-transform duration-300 group-hover:scale-110" />
                                 <span>View Profile</span>
                             </a>
                         </div>
