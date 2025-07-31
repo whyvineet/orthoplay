@@ -94,7 +94,11 @@ const AboutPage = () => {
 
                     <Link
                         to="/our-contributors"
+gssoc-2025Gaurav
                         className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl active:scale-95 group"
+
+                        className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white font-semibold px-6 py-3 rounded-lg transition-all shadow-md"
+ main
                     >
                         <UserRoundCheck size={20} className="transition-transform duration-300 group-hover:scale-110" />
                         View Contributors

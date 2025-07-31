@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
 import HowToPlay from './pages/HowToPlay';
 import AboutPage from './pages/AboutPage';
+import { ToastContainer } from 'react-toastify'
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start');
@@ -250,6 +251,7 @@ const OrthoplayGame = () => {
       </main>
 
       <Footer />
+      <ToastContainer position="top-center" autoClose={3000}/>
     </BrowserRouter>
   );
 };
