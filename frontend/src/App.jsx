@@ -1,16 +1,19 @@
-import { useState, useEffect, useCallback } from "react";
-import StartPage from "./pages/StartPage";
-import GamePage from "./pages/GamePage";
-import CompletePage from "./pages/CompletePage";
-import ErrorMessage from "./components/ErrorMessage";
-import { apiService } from "./services/apiService";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ContributorsPage from "./pages/ContributorsPage";
-import HowToPlay from "./pages/HowToPlay";
-import AboutPage from "./pages/AboutPage";
+import { useState, useEffect, useCallback } from 'react';
+import StartPage from './pages/StartPage';
+import GamePage from './pages/GamePage';
+import CompletePage from './pages/CompletePage';
+import ErrorMessage from './components/ErrorMessage';
+import { apiService } from './services/apiService';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ContributorsPage from './pages/ContributorsPage';
+import HowToPlay from './pages/HowToPlay';
+import AboutPage from './pages/AboutPage';
+import { ToastContainer } from 'react-toastify'
+
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState("start"); // 'start', 'playing', 'complete'
@@ -266,6 +269,7 @@ const OrthoplayGame = () => {
       </main>
 
       <Footer />
+      <ToastContainer position="top-center" autoClose={3000}/>
     </BrowserRouter>
   );
 };
