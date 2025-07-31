@@ -32,7 +32,7 @@ const CompletePage = ({
       await ttsService.speak(correctWord, {
         onStart: () => setIsPlayingAudio(true),
         onEnd: () => setIsPlayingAudio(false),
-        onError: () => setIsPlayingAudio(false)
+        onError: () => setIsPlayingAudio(false),
         onError: () => setIsPlayingAudio(false),
       });
     } catch (error) {
