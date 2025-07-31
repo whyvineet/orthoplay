@@ -291,35 +291,9 @@ const OrthoplayGame = () => {
       </main>
 
       <Footer />
-    // </>
-  );
-};
-
-export default App;
-      <main className="min-h-screen">
-        <Routes>
-          <Route path="/our-contributors" element={<ContributorsPage />} />
-          <Route path="/how-to-play" element={<HowToPlay />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route
-            path="/"
-            element={
-              gameState === 'start' ? (
-                <StartPage {...gameProps} />
-              ) : gameState === 'playing' ? (
-                <GamePage {...gameProps} />
-              ) : gameState === 'complete' ? (
-                <CompletePage {...gameProps} />
-              ) : null
-            }
-          />
-        </Routes>
-      </main>
-
-      <Footer />
-      <ToastContainer position="top-center" autoClose={3000}/>
     </BrowserRouter>
   );
 };
+}
 
-export default OrthoplayGame;
+export default App;
