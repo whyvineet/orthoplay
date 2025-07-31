@@ -46,7 +46,7 @@ const Footer = () => {
                 },
                 {
                     name: "How To Play",
-                    href: "/",
+                    href: "/how-to-play",
                     icon: Book,
                     color: "text-blue-400",
                 },
