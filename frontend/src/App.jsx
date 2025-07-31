@@ -8,12 +8,12 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
-
-
-const App = () => {
 import HowToPlay from './pages/HowToPlay';
 import AboutPage from './pages/AboutPage';
 import { ToastContainer } from 'react-toastify'
+
+const App = () => {
+
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start');
