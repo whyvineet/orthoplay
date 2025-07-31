@@ -1,7 +1,10 @@
 """API routes for the Orthoplay game."""
 
-from fastapi import APIRouter, HTTPException
+from fastapi import *
 from app.models import *
+from pydantic import BaseModel
+from google.generativeai import GenerativeModel, configure
+
 from app.services import GameService
 
 router = APIRouter()
@@ -194,3 +197,18 @@ async def get_game_stats(word_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to get game stats: {str(e)}")
+
+# Load Gemini API key
+configure(api_key="AIzaSyDrtgNN9qKg_zDI9J8FnlMs97N5CeQCYv4")
+
+class ChatRequest(BaseModel):
+    message: str
+
+@router.post("/chat")
+async def chat_with_gemini(request: ChatRequest):
+    try:
+        model = GenerativeModel("gemini-2.0-flash")
+        result = model.generate_content(request.message)
+        return {"reply": result.text}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to generate response: {str(e)}")

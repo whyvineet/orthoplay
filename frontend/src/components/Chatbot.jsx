@@ -1,14 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { MessageCircle, X, Send, Bot, User, Loader2 } from "lucide-react";
+"use client";
 
-const genAI = new GoogleGenerativeAI("genai_api_key");
+import React, { useState, useRef, useEffect } from "react";
+import { MessageCircle, X, Send, Bot, User, Loader2 } from "lucide-react";
 
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [messages, setMessages] = useState([
-    { from: "bot", text: "Hi! I'm your AI assistant. How can I help you today? add your GENERATIVE-AI IN COMPONENTS/CHATBOT.JSX api key", timestamp: Date.now() }
+    {
+      from: "bot",
+      text: "Hi! I'm your AI assistant. How can I help you today?",
+      timestamp: Date.now(),
+    },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -48,33 +51,43 @@ const Chatbot = () => {
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return;
 
-    const userMessage = { 
-      from: "user", 
-      text: input.trim(), 
-      timestamp: Date.now() 
+    const userMessage = {
+      from: "user",
+      text: input.trim(),
+      timestamp: Date.now(),
     };
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-      const result = await model.generateContent(input.trim());
-      const response = await result.response;
-      const text = response.text();
+      const res = await fetch(`${API_BASE_URL}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage.text }),
+      });
 
-      setMessages(prev => [...prev, { 
-        from: "bot", 
-        text: text, 
-        timestamp: Date.now() 
-      }]);
+      const data = await res.json();
+
+      const botMessage = {
+        from: "bot",
+        text: data.reply || "I couldn't understand that. Please try again.",
+        timestamp: Date.now(),
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
       console.error("Chatbot error:", err);
-      setMessages(prev => [...prev, { 
-        from: "bot", 
-        text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment.", 
-        timestamp: Date.now() 
-      }]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          from: "bot",
+          text: "Server error. Please try again later.",
+          timestamp: Date.now(),
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -88,9 +101,9 @@ const Chatbot = () => {
   };
 
   const formatTime = (timestamp) => {
-    return new Date(timestamp).toLocaleTimeString([], { 
-      hour: '2-digit', 
-      minute: '2-digit' 
+    return new Date(timestamp).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
