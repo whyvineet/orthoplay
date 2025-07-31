@@ -1,7 +1,7 @@
 import { Volume2, Play, Square, AlertCircle, RefreshCw } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { ttsService } from '../services/ttsService.js';
-
+import { toast } from 'react-toastify';
 const AudioPlayer = ({ currentGame }) => {
     const [isPlayingAudio, setIsPlayingAudio] = useState(false);
     const [speechSupported, setSpeechSupported] = useState(false);
@@ -28,14 +28,13 @@ const AudioPlayer = ({ currentGame }) => {
 
     const playAudio = async () => {
         if (!speechSupported) {
-            alert('Text-to-Speech is not supported in your browser');
-            return;
+            return toast.warn('Text-to-Speech is not supported in your browser');
+
         }
 
         if (!currentGame.word) {
             console.error('No word available for TTS. Current game:', currentGame);
-            alert('Word not available for playback');
-            return;
+            return toast.error('Word not available for playback');
         }
 
         console.log('Playing word:', currentGame.word);
@@ -48,13 +47,13 @@ const AudioPlayer = ({ currentGame }) => {
                 onError: (error) => {
                     console.error('TTS error:', error);
                     setIsPlayingAudio(false);
-                    alert('Audio playback failed. Please try again.');
+                    toast.error('Audio playback failed. Please try again.');
                 }
             });
         } catch (error) {
             console.error('TTS error:', error);
             setIsPlayingAudio(false);
-            alert('Failed to play audio. Please try again.');
+            toast.error('Failed to play audio. Please try again.');
         }
     };
 
