@@ -89,7 +89,7 @@ const AboutPage = () => {
                     </a>
 
                     <Link
-                        href="/our-contributors"
+                        to="/our-contributors"
                         className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white font-semibold px-6 py-3 rounded-lg transition-all shadow-md"
                     >
                         <UserRoundCheck size={20} />
