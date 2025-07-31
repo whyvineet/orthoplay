@@ -21,6 +21,9 @@ wheels/
 *.egg
 MANIFEST
 
+# Python version management
+.python-version
+
 # Virtual environments
 venv/
 env/
@@ -121,3 +124,12 @@ temp/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Vite specific
+.vite/
+
+# TypeScript
+*.tsbuildinfo
+
+# Local development
+.local

@@ -36,7 +36,7 @@ class ApiService {
             return response
         } catch (error) {
             console.error('Failed to get the contributors', error);
-            return {error: "Failed to fetch the contributors", response: null};
+            return { error: "Failed to fetch the contributors", response: null };
         }
     }
 
