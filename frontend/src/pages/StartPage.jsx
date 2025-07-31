@@ -1,6 +1,19 @@
+import { useState } from "react";
 import { Volume2, CheckCircle, XCircle } from "lucide-react";
+import DifficultyPopup from "../components/DifficultyPopup";
 
-const StartPage = ({ isLoading, startGame, apiStatus }) => {
+const StartPage = ({ isLoading, startGameWithDifficulty, apiStatus }) => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleStartClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleSelectDifficulty = (difficulty) => {
+    setShowPopup(false);
+    startGameWithDifficulty(difficulty);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br pt-12 from-slate-50 to-blue-50">
       <div className="container mx-auto">
@@ -38,7 +51,7 @@ const StartPage = ({ isLoading, startGame, apiStatus }) => {
             </div>
 
             <button
-              onClick={startGame}
+              onClick={handleStartClick}
               disabled={isLoading}
               className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-2xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed min-w-48"
             >
@@ -67,7 +80,11 @@ const StartPage = ({ isLoading, startGame, apiStatus }) => {
             </div>
           </div>
         </div>
-
+        <DifficultyPopup
+          isOpen={showPopup}
+          onSelect={handleSelectDifficulty}
+          onClose={() => setShowPopup(false)}
+        />
       </div>
     </div>
   );

@@ -13,9 +13,10 @@ import HowToPlay from './pages/HowToPlay';
 import AboutPage from './pages/AboutPage';
 import { ToastContainer } from 'react-toastify'
 
+
 const OrthoplayGame = () => {
-  const [gameState, setGameState] = useState('start');
-  const [gamePhase, setGamePhase] = useState('length');
+  const [gameState, setGameState] = useState('start'); // 'start', 'playing', 'complete'
+  const [gamePhase, setGamePhase] = useState('length'); // 'length', 'spelling'
   const [isLoading, setIsLoading] = useState(false);
   const [currentGame, setCurrentGame] = useState({
     wordId: '',
@@ -34,9 +35,6 @@ const OrthoplayGame = () => {
   const [apiStatus, setApiStatus] = useState('unknown');
   const [errorMessage, setErrorMessage] = useState('');
   const [wordLength, setWordLength] = useState(0);
-
-
-  const correctAudio = new Audio('/sounds/correct.mp3');
 
   const checkApiStatus = useCallback(async () => {
     try {
@@ -134,10 +132,6 @@ const OrthoplayGame = () => {
         setExampleSentence(data.example_sentence);
         setIsWinner(true);
         setGameState('complete');
-
-        // Play feedback sound
-        correctAudio.play().catch(err => console.error('Correct sound error:', err));
-    
       }
 
       setCurrentGuess('');
@@ -196,6 +190,30 @@ const OrthoplayGame = () => {
     });
   };
 
+  const startGameWithDifficulty = async (difficulty) => {
+    setIsLoading(true);
+    setErrorMessage('');
+
+    try {
+      const data = await apiService.startGame(difficulty);
+      setCurrentGame({
+        wordId: data.word_id,
+        word: data.word,
+        description: data.description,
+        lengthOptions: data.length_options,
+      });
+
+      setGameState('playing');
+      setGamePhase('length');
+      resetGameData();
+    } catch (error) {
+      console.error('Error starting game:', error);
+      showError(`Failed to start game: ${error.message}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const gameProps = {
     gameState,
     gamePhase,
@@ -221,6 +239,7 @@ const OrthoplayGame = () => {
 
   return (
     <BrowserRouter>
+
       {errorMessage && (
         <ErrorMessage
           message={errorMessage}
@@ -230,8 +249,9 @@ const OrthoplayGame = () => {
 
       <Navigation apiStatus={apiStatus} />
 
-      <main className="min-h-screen">
-        <Routes>
+      <main className='min-h-screen'>
+
+               <Routes>
           <Route path="/our-contributors" element={<ContributorsPage />} />
           <Route path="/how-to-play" element={<HowToPlay />} />
           <Route path="/about" element={<AboutPage />} />
@@ -239,7 +259,7 @@ const OrthoplayGame = () => {
             path="/"
             element={
               gameState === 'start' ? (
-                <StartPage {...gameProps} />
+                <StartPage {...gameProps} startGameWithDifficulty={startGameWithDifficulty} />
               ) : gameState === 'playing' ? (
                 <GamePage {...gameProps} />
               ) : gameState === 'complete' ? (
@@ -255,5 +275,6 @@ const OrthoplayGame = () => {
     </BrowserRouter>
   );
 };
+
 
 export default OrthoplayGame;
