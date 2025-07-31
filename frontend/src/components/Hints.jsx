@@ -12,7 +12,7 @@ function Hints({ hints, numberOfHints, setNumberOfHints }) {
     <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8">
       <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
         <Lightbulb className="h-5 w-5 mr-2" />
-        {numberOfHints == 0 ? "Need Some Hint ?" : `Hint: ${numberOfHints}`}
+        {numberOfHints === 0 ? "Need Some Hint ?" : `Hint: ${numberOfHints}`}
       </h3>
       {hint && <p className="text-gray-700 text-lg leading-relaxed">{hint}</p>}
 
