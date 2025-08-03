@@ -6,6 +6,10 @@ import ErrorMessage from './components/ErrorMessage';
 import { apiService } from './services/apiService';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import TimedIntro from './pages/TimedIntro';
+import TimedPlay from './pages/TimedPlay';
+import TimedSummary from './pages/TimedSummary';
+
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
@@ -234,6 +238,9 @@ const OrthoplayGame = () => {
         <Routes>
           <Route path="/our-contributors" element={<ContributorsPage />} />
           <Route path="/how-to-play" element={<HowToPlay />} />
+          <Route path="/timed" element={<TimedIntro />} />
+          <Route path="/timed/play" element={<TimedPlay />} />
+          <Route path="/timed/summary" element={<TimedSummary />} />
           <Route path="/about" element={<AboutPage />} />
           <Route
             path="/"
