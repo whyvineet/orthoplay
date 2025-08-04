@@ -57,7 +57,7 @@ const GamePage = ({
                 onClick={() => setErrorMessage("")}
                 className="text-red-500 hover:text-red-700 ml-2"
               >
-                <XCircle className="h-5 w-5" />
+                <XCircle className="h-5 w-5 transition-transform duration-300 hover:scale-110" />
               </button>
             </div>
           </div>

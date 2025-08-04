@@ -40,23 +40,23 @@ const CompletePage = ({
       <div className="container mx-auto px-4 py-8 flex-grow">
         {/* Header */}
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Orthoplay</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-blue-600">Orthoplay</h1>
         </header>
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-12 text-center">
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-12 text-center hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <div className="mb-8">
               <div
-                className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 ${
-                  isWinner ? 'bg-green-100' : 'bg-orange-100'
+                className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 transition-all duration-300 hover:scale-110 group ${
+                  isWinner ? 'bg-green-100 hover:bg-green-200' : 'bg-orange-100 hover:bg-orange-200'
                 }`}
               >
                 {isWinner ? (
-                  <Trophy className="h-10 w-10 text-green-600" />
+                  <Trophy className="h-10 w-10 text-green-600 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
                 ) : (
-                  <Frown className="h-10 w-10 text-orange-600" />
+                  <Frown className="h-10 w-10 text-orange-600 transition-transform duration-300 group-hover:scale-110" />
                 )}
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 transition-colors duration-300 hover:text-blue-600">
                 {isWinner ? 'Congratulations!' : 'Better luck next time!'}
               </h2>
             </div>
@@ -68,14 +68,14 @@ const CompletePage = ({
                   {correctWord.toUpperCase()}
                 </span>
               </p>
-              <p className="text-lg text-gray-600 mb-6 italic">
+              <p className="text-lg text-gray-600 mb-6 italic transition-colors duration-300 hover:text-gray-700">
                 "{exampleSentence}"
               </p>
 
               <button
                 onClick={playAudio}
                 disabled={!speechSupported || isPlayingAudio}
-                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mb-6"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-md mb-6 active:scale-95 group"
               >
                 <Volume2 className="h-5 w-5 mr-2" />
                 {isPlayingAudio ? "Playing..." : "Hear Word"}
@@ -83,7 +83,7 @@ const CompletePage = ({
             </div>
 
             <div className="mb-8">
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 transition-colors duration-300 hover:text-gray-700">
                 {isWinner
                   ? `You solved it in ${attempts} attempts!`
                   : `You tried ${attempts} times - keep practicing!`}
@@ -97,9 +97,9 @@ const CompletePage = ({
 
             <button
               onClick={resetGame}
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-2xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-2xl hover:bg-blue-700 hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-lg active:scale-95 group"
             >
-             <ArrowRight className="h-5 w-5 mr-2" />
+             <ArrowRight className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
 
               Next Word
             </button>
