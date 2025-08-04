@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import StartPage from './pages/StartPage';
 import GamePage from './pages/GamePage';
@@ -7,15 +7,19 @@ import ErrorMessage from './components/ErrorMessage';
 import { apiService } from './services/apiService';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import GlobalStyles from './components/GlobalStyles';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
 import HowToPlay from './pages/HowToPlay';
 import AboutPage from './pages/AboutPage';
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+// Import ThemeProvider
+import { ThemeProvider } from './context/ThemeContext';
 
-const OrthoplayGame = () => {
+const App = () => {
   const [gameState, setGameState] = useState("start"); // 'start', 'playing', 'complete'
   const [gamePhase, setGamePhase] = useState("length"); // 'length', 'spelling'
   const [isLoading, setIsLoading] = useState(false);
@@ -238,40 +242,47 @@ const OrthoplayGame = () => {
   };
 
   return (
-    <BrowserRouter>
-      {errorMessage && (
-        <ErrorMessage
-          message={errorMessage}
-          onClose={() => setErrorMessage("")}
-        />
-      )}
-
-      <Navigation apiStatus={apiStatus} />
-
-      <main className="min-h-screen">
-        <Routes>
-          <Route path="/our-contributors" element={<ContributorsPage />} />
-          <Route path="/how-to-play" element={<HowToPlay />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route
-            path="/"
-            element={
-              gameState === "start" ? (
-                <StartPage {...gameProps} />
-              ) : gameState === "playing" ? (
-                <GamePage {...gameProps} />
-              ) : gameState === "complete" ? (
-                <CompletePage {...gameProps} />
-              ) : null
-            }
+    <ThemeProvider>
+      <GlobalStyles />
+      <BrowserRouter>
+        {errorMessage && (
+          <ErrorMessage
+            message={errorMessage}
+            onClose={() => setErrorMessage("")}
           />
-        </Routes>
-      </main>
+        )}
 
-      <Footer />
-      <ToastContainer position="top-center" autoClose={3000}/>
-    </BrowserRouter>
+        <Navigation apiStatus={apiStatus} />
+
+        <main style={{ backgroundColor: 'var(--background-color)', minHeight: '100vh' }}>
+          <Routes>
+            <Route path="/our-contributors" element={<ContributorsPage />} />
+            <Route path="/how-to-play" element={<HowToPlay />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route
+              path="/"
+              element={
+                gameState === "start" ? (
+                  <StartPage {...gameProps} />
+                ) : gameState === "playing" ? (
+                  <GamePage {...gameProps} />
+                ) : gameState === "complete" ? (
+                  <CompletePage {...gameProps} />
+                ) : null
+              }
+            />
+          </Routes>
+        </main>
+
+        <Footer />
+        <ToastContainer 
+          position="top-center" 
+          autoClose={3000} 
+          theme="auto"
+        />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 
-export default OrthoplayGame;
+export default App;
