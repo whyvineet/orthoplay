@@ -1,10 +1,11 @@
-import { AlertCircle, XCircle } from 'lucide-react';
-import AudioPlayer from '../components/AudioPlayer';
-import WordDescription from '../components/WordDescription';
-import LengthGuesser from '../components/LengthGuesser';
-import SpellingGame from '../components/SpellingGame';
-import SpellingHistory from '../components/SpellingHistory';
-import GameLegend from '../components/GameLegend';
+import { AlertCircle, XCircle } from "lucide-react";
+import AudioPlayer from "../components/AudioPlayer";
+import WordDescription from "../components/WordDescription";
+import Hints from "../components/Hints";
+import LengthGuesser from "../components/LengthGuesser";
+import SpellingGame from "../components/SpellingGame";
+import SpellingHistory from "../components/SpellingHistory";
+import GameLegend from "../components/GameLegend";
 
 const GamePage = ({
   gamePhase,
@@ -15,6 +16,7 @@ const GamePage = ({
   setCurrentGuess,
   spellingHistory,
   attempts,
+  numberOfHints,
   lastMessage,
   wordLength,
   guessLength,
@@ -22,7 +24,14 @@ const GamePage = ({
   revealAnswer,
   errorMessage,
   setErrorMessage,
+  setNumberOfHints,
 }) => {
+  const hints = {
+    hint1: currentGame.hint1,
+    hint2: currentGame.hint2,
+    hint3: currentGame.hint3,
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="container mx-auto px-4 py-8">
@@ -39,12 +48,14 @@ const GamePage = ({
         {/* Error Message */}
         {errorMessage && (
           <div className="max-w-4xl mx-auto mb-6">
-            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300">
-              <AlertCircle className="h-5 w-5 text-red-500 mr-3 transition-transform duration-300 hover:scale-110" />
-              <span className="text-red-800 text-sm flex-1">{errorMessage}</span>
+            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-center shadow-sm">
+              <AlertCircle className="h-5 w-5 text-red-500 mr-3" />
+              <span className="text-red-800 text-sm flex-1">
+                {errorMessage}
+              </span>
               <button
-                onClick={() => setErrorMessage('')}
-                className="text-red-500 hover:text-red-700 ml-2 p-1 rounded-lg hover:bg-red-100 transition-all duration-200"
+                onClick={() => setErrorMessage("")}
+                className="text-red-500 hover:text-red-700 ml-2"
               >
                 <XCircle className="h-5 w-5 transition-transform duration-300 hover:scale-110" />
               </button>
@@ -53,13 +64,17 @@ const GamePage = ({
         )}
 
         <div className="max-w-4xl mx-auto space-y-6">
-          <AudioPlayer
-            currentGame={currentGame}
-          />
+          <AudioPlayer currentGame={currentGame} />
 
           <WordDescription description={currentGame.description} />
 
-          {gamePhase === 'length' && (
+          <Hints
+            hints={hints}
+            numberOfHints={numberOfHints}
+            setNumberOfHints={setNumberOfHints}
+          />
+
+          {gamePhase === "length" && (
             <LengthGuesser
               lengthOptions={currentGame.lengthOptions}
               lengthFeedback={lengthFeedback}
@@ -68,7 +83,7 @@ const GamePage = ({
             />
           )}
 
-          {gamePhase === 'spelling' && (
+          {gamePhase === "spelling" && (
             <SpellingGame
               wordLength={wordLength}
               currentGuess={currentGuess}
