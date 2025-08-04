@@ -40,3 +40,106 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Custom hover animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Enhanced button hover effects */
+.btn-hover-glow:hover {
+  animation: pulse-glow 2s infinite;
+}
+
+.btn-hover-float:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Smooth focus transitions */
+.focus-smooth:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+/* Enhanced card hover effects */
+.card-hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Icon hover animations */
+.icon-hover-spin:hover {
+  animation: logo-spin 1s linear infinite;
+}
+
+.icon-hover-bounce:hover {
+  animation: bounce-in 0.6s ease-out;
+}
+
+/* Text hover effects */
+.text-hover-glow:hover {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Gradient hover effects */
+.gradient-hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: 200% 200%;
+  transition: background-position 0.5s ease;
+}
+
+.gradient-hover:hover {
+  background-position: 100% 100%;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
