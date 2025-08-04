@@ -1,4 +1,17 @@
+[build]
+base = "frontend"
+publish = "dist"
+command = "npm run build"
+
+#  Minimal header rule to satisfy Netlify plugin
+[[headers]]
+for = "/*"
+[headers.values]
+  X-Frame-Options = "DENY"
+  X-XSS-Protection = "1; mode=block"
+
+#  Minimal redirect rule (for React+Vite SPA routing)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "/*"
+to = "/index.html"
+status = 200

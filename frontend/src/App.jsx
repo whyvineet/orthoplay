@@ -6,12 +6,14 @@ import ErrorMessage from './components/ErrorMessage';
 import { apiService } from './services/apiService';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
 import HowToPlay from './pages/HowToPlay';
 import AboutPage from './pages/AboutPage';
 import { ToastContainer } from 'react-toastify'
+
+const App = () => {
+
 
 const OrthoplayGame = () => {
   const [gameState, setGameState] = useState('start');
@@ -34,6 +36,32 @@ const OrthoplayGame = () => {
   const [apiStatus, setApiStatus] = useState('unknown');
   const [errorMessage, setErrorMessage] = useState('');
   const [wordLength, setWordLength] = useState(0);
+  const [score, setScore] = useState(0);
+  const [lastMedalScore, setLastMedalScore] = useState(0);
+
+  useEffect(() => {
+    console.log('App rendered');
+  }, []);
+
+  const handleSubmit = async () => {
+    if (currentGuess === correctWord) {
+      setIsWinner(true);
+      setScore((prev) => prev + 10);
+    } else {
+      setScore((prev) => Math.max(prev - 5, 0));
+    }
+    setAttempts((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    if (score >= 100 && lastMedalScore < 100) {
+      setLastMedalScore(100);
+    } else if (score >= 150 && lastMedalScore < 150) {
+      setLastMedalScore(150);
+    } else if (score >= 200 && lastMedalScore < 200) {
+      setLastMedalScore(200);
+    }
+  }, [score, lastMedalScore]);
 
 
   const correctAudio = new Audio('/sounds/correct.mp3');
@@ -134,10 +162,13 @@ const OrthoplayGame = () => {
         setExampleSentence(data.example_sentence);
         setIsWinner(true);
         setGameState('complete');
+        setScore(prev => prev + 10);
+      } else {
+        setScore(prev => Math.max(prev - 5, 0));
 
         // Play feedback sound
         correctAudio.play().catch(err => console.error('Correct sound error:', err));
-    
+  
       }
 
       setCurrentGuess('');
@@ -160,6 +191,7 @@ const OrthoplayGame = () => {
       setIsWinner(false);
       setLastMessage(data.message);
       setGameState('complete');
+      setScore(prev => Math.max(prev - 5, 0));
     } catch (error) {
       console.error('Error revealing answer:', error);
       showError(`Failed to reveal answer: ${error.message}`);
@@ -169,10 +201,11 @@ const OrthoplayGame = () => {
   };
 
   const resetGame = () => {
-    setGameState('start');
+    setGameState('playing');
     setGamePhase('length');
     resetGameData();
     resetCurrentGame();
+    startGame();
   };
 
   const resetGameData = () => {
@@ -196,6 +229,11 @@ const OrthoplayGame = () => {
     });
   };
 
+  const resetScore = () => {
+    setScore(0);
+    setLastMedalScore(0);
+  };
+
   const gameProps = {
     gameState,
     gamePhase,
@@ -217,6 +255,8 @@ const OrthoplayGame = () => {
     submitSpelling,
     revealAnswer,
     resetGame,
+    score,
+    onScoreReset: resetScore,
   };
 
   return (
@@ -230,30 +270,30 @@ const OrthoplayGame = () => {
 
       <Navigation apiStatus={apiStatus} />
 
-      <main className="min-h-screen">
-        <Routes>
-          <Route path="/our-contributors" element={<ContributorsPage />} />
-          <Route path="/how-to-play" element={<HowToPlay />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route
-            path="/"
-            element={
-              gameState === 'start' ? (
-                <StartPage {...gameProps} />
-              ) : gameState === 'playing' ? (
-                <GamePage {...gameProps} />
-              ) : gameState === 'complete' ? (
-                <CompletePage {...gameProps} />
-              ) : null
-            }
-          />
-        </Routes>
+      <main className='min-h-screen'>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/our-contributors" element={<ContributorsPage />} />
+            <Route
+              path="/"
+              element={
+                gameState === 'start' ? (
+                  <StartPage {...gameProps} />
+                ) : gameState === 'playing' ? (
+                  <GamePage {...gameProps} />
+                ) : gameState === 'complete' ? (
+                  <CompletePage {...gameProps} />
+                ) : null
+              }
+            />
+          </Routes>
+        </BrowserRouter>
       </main>
 
       <Footer />
-      <ToastContainer position="top-center" autoClose={3000}/>
     </BrowserRouter>
   );
 };
+}
 
-export default OrthoplayGame;
+export default App;
