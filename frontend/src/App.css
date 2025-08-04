@@ -1,3 +1,98 @@
+/* Theme Variables */
+:root {
+  /* Light theme (default) */
+  --background-color: #ffffff;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --primary-color: #0066cc;
+  --secondary-color: #f4f4f4;
+  --accent-color: #3b82f6;
+  --border-color: #e0e0e0;
+  --nav-background: #ffffff;
+  --button-bg: #2563eb;
+  --button-text: white;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --header-color: #111827;
+  --footer-bg: #f9fafb;
+  --game-card-bg: #ffffff;
+  --hover-color: #e5e7eb;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --disabled-color: #9ca3af;
+}
+
+[data-theme='dark'] {
+  /* Dark theme variables */
+  --background-color: #111827;
+  --card-background: #1f2937;
+  --text-color: #e5e7eb;
+  --primary-color: #60a5fa;
+  --secondary-color: #374151;
+  --accent-color: #3b82f6;
+  --border-color: #4b5563;
+  --nav-background: #1f2937;
+  --button-bg: #3b82f6;
+  --button-text: #ffffff;
+  --input-bg: #374151;
+  --input-border: #6b7280;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --header-color: #e5e7eb;
+  --footer-bg: #1f2937;
+  --game-card-bg: #1f2937;
+  --hover-color: #374151;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --disabled-color: #6b7280;
+}
+
+/* Apply to body and general elements */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--header-color);
+}
+
+/* Links */
+a {
+  color: var(--accent-color);
+}
+
+/* Apply to all inputs */
+input, textarea, select {
+  background-color: var(--input-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--input-border) !important;
+}
+
+/* Apply to all buttons */
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-color: var(--border-color);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Card styles */
+.card, .white-box, .main-content {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+  box-shadow: 0 4px 6px var(--shadow-color) !important;
+}
+
+/* Keep your original CSS below this */
 #root {
   max-width: 1280px;
   margin: 0 auto;

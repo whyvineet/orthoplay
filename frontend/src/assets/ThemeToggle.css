@@ -1,0 +1,128 @@
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* Fully rounded */
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle glow effect on hover */
+.theme-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Add a subtle animation on click */
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Enhance focus state for accessibility */
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-color), 0 2px 5px var(--shadow-color);
+}
+
+/* Icon styling */
+.theme-icon {
+  font-size: 1.125rem;
+  transition: transform 0.3s ease;
+}
+
+/* Add rotation animation for sun/moon icons */
+[data-theme='dark'] .theme-toggle .theme-icon {
+  animation: spin-ccw 0.5s ease;
+}
+
+[data-theme='light'] .theme-toggle .theme-icon {
+  animation: spin-cw 0.5s ease;
+}
+
+@keyframes spin-cw {
+  0% { transform: rotate(-30deg) scale(0.9); opacity: 0.7; }
+  100% { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+@keyframes spin-ccw {
+  0% { transform: rotate(30deg) scale(0.9); opacity: 0.7; }
+  100% { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+/* Text label styling */
+.theme-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: none;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+/* Show text on larger screens */
+@media (min-width: 640px) {
+  .theme-text {
+    display: inline;
+  }
+  
+  .theme-toggle {
+    padding: 0.5rem 1.25rem;
+  }
+}
+
+/* Dark mode specific styles */
+[data-theme='dark'] .theme-toggle {
+  background: #3b82f6; /* A blue that stands out in dark mode */
+  border-color: #4b5563;
+}
+
+[data-theme='dark'] .theme-toggle:hover {
+  background: #2563eb;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Light mode specific styles */
+[data-theme='light'] .theme-toggle {
+  background: #3b82f6;
+  border-color: #d1d5db;
+}
+
+[data-theme='light'] .theme-toggle:hover {
+  background: #2563eb;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+/* Mobile optimization */
+@media (max-width: 640px) {
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .theme-icon {
+    margin: 0;
+  }
+}
+
+/* For fixed position on mobile if needed */
+.theme-toggle-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
