@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Volume2, CheckCircle, XCircle } from "lucide-react";
+import Chatbot from "../components/Chatbot";
 import { ThemeContext } from "../context/ThemeContext";
 
 const StartPage = ({ isLoading, startGame, apiStatus }) => {
@@ -102,6 +103,7 @@ const StartPage = ({ isLoading, startGame, apiStatus }) => {
           </div>
         </div>
       </div>
+      <Chatbot />
     </div>
   );
 };
