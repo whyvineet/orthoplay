@@ -217,6 +217,7 @@ class LeaderboardDataService:
             print(f"Error getting user stats: {e}")
             return {}
 
+
     def get_unique_users_count(self) -> int:
         """Get count of unique users who have played."""
         try:
@@ -262,6 +263,7 @@ class LeaderboardDataService:
         except Exception as e:
             print(f"Error getting completion stats: {e}")
             return {"satisfaction_rate": 95}
+
     
     def get_user_rank(self, username: str, score: int) -> Optional[int]:
         """Get the rank of a user based on their score."""

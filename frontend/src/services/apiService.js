@@ -182,6 +182,7 @@ class ApiService {
         }
     }
 
+
     async getAppStats() {
         try {
             const response = await this.makeRequest('/app/stats');
@@ -198,6 +199,7 @@ class ApiService {
             };
         }
     }
+
 }
 
 export const apiService = new ApiService();

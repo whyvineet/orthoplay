@@ -337,6 +337,7 @@ async def get_user_stats(username: str):
         raise HTTPException(status_code=500, detail=f"Failed to get user stats: {str(e)}")
 
 
+
 @router.get("/app/stats")
 async def get_app_stats():
     """Get application-wide statistics."""
