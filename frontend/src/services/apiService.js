@@ -181,6 +181,23 @@ class ApiService {
             return { success: false };
         }
     }
+
+    async getAppStats() {
+        try {
+            const response = await this.makeRequest('/app/stats');
+            return response;
+        } catch (error) {
+            console.error('Failed to get app stats:', error);
+            // Return fallback data if API fails
+            return {
+                active_learners: 100,
+                words_available: 1000,
+                total_games_played: 500,
+                community_love: 95,
+                open_source: 100
+            };
+        }
+    }
 }
 
 export const apiService = new ApiService();

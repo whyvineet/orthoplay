@@ -1,5 +1,5 @@
 {
-  "fetched_at": 1754367427.3370275,
+  "fetched_at": 1754374959.206384,
   "data": [
     {
       "login": "whyvineet",
@@ -282,6 +282,28 @@
       "repos_url": "https://api.github.com/users/RAJA-072/repos",
       "events_url": "https://api.github.com/users/RAJA-072/events{/privacy}",
       "received_events_url": "https://api.github.com/users/RAJA-072/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false,
+      "contributions": 1
+    },
+    {
+      "login": "Richajaishwal0",
+      "id": 156594333,
+      "node_id": "U_kgDOCVVwnQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156594333?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Richajaishwal0",
+      "html_url": "https://github.com/Richajaishwal0",
+      "followers_url": "https://api.github.com/users/Richajaishwal0/followers",
+      "following_url": "https://api.github.com/users/Richajaishwal0/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Richajaishwal0/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Richajaishwal0/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Richajaishwal0/subscriptions",
+      "organizations_url": "https://api.github.com/users/Richajaishwal0/orgs",
+      "repos_url": "https://api.github.com/users/Richajaishwal0/repos",
+      "events_url": "https://api.github.com/users/Richajaishwal0/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Richajaishwal0/received_events",
       "type": "User",
       "user_view_type": "public",
       "site_admin": false,

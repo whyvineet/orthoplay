@@ -93,9 +93,11 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="lg:col-span-2">
                         <div className="flex items-center mb-4">
-                            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
-                                <span className="text-white font-bold text-sm">3D</span>
-                            </div>
+                            <img
+                                src="/icon.png"
+                                alt="Orthoplay Logo"
+                                className="w-8 h-8 mr-3 transition-transform duration-300 hover:scale-110"
+                            />
                             <h2 className={`text-xl font-bold ${
                                 darkMode ? "text-white" : "text-gray-900"
                             }`}>
