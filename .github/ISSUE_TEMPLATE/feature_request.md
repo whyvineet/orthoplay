@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest an idea to improve Orthoplay
 title: "[FEATURE]"
 labels: enhancement
-assignees: whyvineet
+assignees: ''
 
 ---
 
