@@ -17,24 +17,32 @@ function Hints({ hints, numberOfHints, setNumberOfHints, trackHintUsage }) {
   }, [numberOfHints, setNumberOfHints, hints, hint]);
 
   return (
-    <div className={`rounded-3xl shadow-lg p-8 ${
-      darkMode 
-        ? "bg-gray-800 border border-gray-700" 
-        : "bg-white border border-gray-100"
-    }`}>
-      <h3 className={`text-xl font-bold mb-4 flex items-center ${
-        darkMode ? "text-gray-100" : "text-gray-900"
-      }`}>
-        <Lightbulb className={`h-5 w-5 mr-2 ${
-          darkMode ? "text-yellow-400" : "text-yellow-500"
-        }`} />
+    <div
+      className={`rounded-3xl shadow-lg p-8 ${
+        darkMode
+          ? "bg-gray-800 border border-gray-700"
+          : "bg-white border border-gray-100"
+      }`}
+    >
+      <h3
+        className={`text-xl font-bold mb-4 flex items-center ${
+          darkMode ? "text-gray-100" : "text-gray-900"
+        }`}
+      >
+        <Lightbulb
+          className={`h-5 w-5 mr-2 ${
+            darkMode ? "text-yellow-400" : "text-yellow-500"
+          }`}
+        />
         {numberOfHints === 0 ? "Need Some Hint ?" : `Hint: ${numberOfHints}`}
       </h3>
-      
+
       {hint && (
-        <p className={`text-lg leading-relaxed ${
-          darkMode ? "text-gray-300" : "text-gray-700"
-        }`}>
+        <p
+          className={`text-lg leading-relaxed ${
+            darkMode ? "text-gray-300" : "text-gray-700"
+          }`}
+        >
           {hint}
         </p>
       )}
@@ -52,17 +60,19 @@ function Hints({ hints, numberOfHints, setNumberOfHints, trackHintUsage }) {
             });
           }}
           className={`px-6 py-3 mt-4 text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
-            darkMode 
-              ? "bg-blue-700 hover:bg-blue-600" 
+            darkMode
+              ? "bg-blue-700 hover:bg-blue-600"
               : "bg-blue-600 hover:bg-blue-700"
           }`}
         >
           Hint
         </button>
       ) : (
-        <p className={`mt-4 text-base leading-relaxed ${
-          darkMode ? "text-gray-400" : "text-gray-500"
-        }`}>
+        <p
+          className={`mt-4 text-base leading-relaxed ${
+            darkMode ? "text-gray-400" : "text-gray-500"
+          }`}
+        >
           All hints used
         </p>
       )}
