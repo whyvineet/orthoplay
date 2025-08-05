@@ -2,6 +2,7 @@ import { Volume2, Trophy, Frown, ArrowRight } from 'lucide-react';
 import { useState, useEffect, useContext } from 'react';
 import { ttsService } from '../services/ttsService.js';
 import { ThemeContext } from '../context/ThemeContext';
+import ScoreSubmission from '../components/ScoreSubmission';
 
 const CompletePage = ({
   isWinner,
@@ -10,9 +11,12 @@ const CompletePage = ({
   attempts,
   numberOfHints,
   resetGame,
+  getGameCompletionData,
 }) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(false);
+  const [showScoreSubmission, setShowScoreSubmission] = useState(false);
+  const [submissionComplete, setSubmissionComplete] = useState(false);
   const { darkMode } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -36,6 +40,21 @@ const CompletePage = ({
       setIsPlayingAudio(false);
     }
   };
+
+  const handleSubmitScore = () => {
+    setShowScoreSubmission(true);
+  };
+
+  const handleSubmissionComplete = (result) => {
+    setSubmissionComplete(true);
+    setShowScoreSubmission(false);
+  };
+
+  const handleSkipSubmission = () => {
+    setShowScoreSubmission(false);
+  };
+
+  const gameCompletionData = getGameCompletionData ? getGameCompletionData() : null;
   
   return (
     <div className={`min-h-screen flex flex-col ${
@@ -131,11 +150,28 @@ const CompletePage = ({
               </p>
             </div>
 
+            {/* Score Submission Section */}
+            {isWinner && !showScoreSubmission && !submissionComplete && gameCompletionData && (
+              <div className="mb-6">
+                <button
+                  onClick={handleSubmitScore}
+                  className={`inline-flex items-center justify-center px-6 py-3 text-white font-semibold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md mr-4 active:scale-95 group ${
+                    darkMode
+                      ? 'bg-green-700 hover:bg-green-600'
+                      : 'bg-green-600 hover:bg-green-700'
+                  }`}
+                >
+                  <Trophy className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:scale-110" />
+                  Submit Score
+                </button>
+              </div>
+            )}
+
             <button
               onClick={resetGame}
               className={`inline-flex items-center justify-center px-8 py-4 text-white text-lg font-semibold rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-lg active:scale-95 group ${
-                darkMode 
-                  ? 'bg-blue-700 hover:bg-blue-600' 
+                darkMode
+                  ? 'bg-blue-700 hover:bg-blue-600'
                   : 'bg-blue-600 hover:bg-blue-700'
               }`}
             >
@@ -143,6 +179,17 @@ const CompletePage = ({
               Next Word
             </button>
           </div>
+
+          {/* Score Submission Modal */}
+          {showScoreSubmission && gameCompletionData && (
+            <div className="mt-8">
+              <ScoreSubmission
+                gameData={gameCompletionData}
+                onSubmissionComplete={handleSubmissionComplete}
+                onSkip={handleSkipSubmission}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

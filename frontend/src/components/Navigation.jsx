@@ -13,6 +13,10 @@ const Navigation = ({ apiStatus }) => {
       redirectTo: "/how-to-play"
     },
     {
+      text: "Leaderboard",
+      redirectTo: "/leaderboard"
+    },
+    {
       text: "About",
       redirectTo: "/about"
     },

@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContributorsPage from './pages/ContributorsPage';
 import HowToPlay from './pages/HowToPlay';
 import AboutPage from './pages/AboutPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -38,6 +39,7 @@ const App = () => {
   const [spellingHistory, setSpellingHistory] = useState([]);
   const [attempts, setAttempts] = useState(0);
   const [numberOfHints, setNumberOfHints] = useState(0);
+  const [gameStartTime, setGameStartTime] = useState(null);
   const [lastMessage, setLastMessage] = useState("");
   const [correctWord, setCorrectWord] = useState("");
   const [exampleSentence, setExampleSentence] = useState("");
@@ -85,6 +87,7 @@ const App = () => {
 
       setGameState("playing");
       setGamePhase("length");
+      setGameStartTime(Date.now());
       resetGameData();
     } catch (error) {
       console.error("Error starting game:", error);
@@ -216,6 +219,31 @@ const App = () => {
     });
   };
 
+  const trackHintUsage = async () => {
+    if (currentGame.wordId) {
+      try {
+        await apiService.trackHintUsage(currentGame.wordId);
+      } catch (error) {
+        console.error("Failed to track hint usage:", error);
+      }
+    }
+  };
+
+  const getGameCompletionData = () => {
+    if (!gameStartTime) return null;
+
+    const completionTime = (Date.now() - gameStartTime) / 1000; // Convert to seconds
+
+    return {
+      wordId: currentGame.wordId,
+      word: correctWord,
+      score: 0, // Will be calculated by backend
+      attempts: attempts,
+      hintsUsed: numberOfHints,
+      completionTime: completionTime
+    };
+  };
+
   const gameProps = {
     gameState,
     gamePhase,
@@ -239,6 +267,8 @@ const App = () => {
     revealAnswer,
     resetGame,
     setNumberOfHints,
+    trackHintUsage,
+    getGameCompletionData,
   };
 
   return (
@@ -259,6 +289,7 @@ const App = () => {
             <Route path="/our-contributors" element={<ContributorsPage />} />
             <Route path="/how-to-play" element={<HowToPlay />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/leaderboard" element={<LeaderboardPage />} />
             <Route
               path="/"
               element={

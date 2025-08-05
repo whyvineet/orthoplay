@@ -27,6 +27,7 @@ const GamePage = ({
   errorMessage,
   setErrorMessage,
   setNumberOfHints,
+  trackHintUsage,
 }) => {
   const { darkMode } = useContext(ThemeContext);
   
@@ -96,6 +97,7 @@ const GamePage = ({
             hints={hints}
             numberOfHints={numberOfHints}
             setNumberOfHints={setNumberOfHints}
+            trackHintUsage={trackHintUsage}
           />
 
           {gamePhase === "length" && (

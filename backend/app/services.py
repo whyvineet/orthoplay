@@ -3,7 +3,9 @@
 import json
 import os
 import random
+import time
 from typing import Dict, List
+from datetime import datetime
 
 
 class WordService:
@@ -29,22 +31,24 @@ class WordService:
 
 class GameService:
     """Service for game logic."""
-    
+
     def __init__(self):
         self.word_service = WordService()
         self.game_sessions = {}
-    
+
     def start_game(self) -> Dict:
         """Start a new game session."""
         word = self.word_service.get_random_word()
         session_id = f"game_{random.randint(1000, 9999)}"
-        
+
         self.game_sessions[session_id] = {
             "word": word,
             "attempts": 0,
-            "completed": False
+            "completed": False,
+            "hints_used": 0,
+            "start_time": time.time()
         }
-        
+
         return {
             "session_id": session_id,
             "word": word,
@@ -98,3 +102,51 @@ class GameService:
                     correct_letters[correct_letters.index(letter)] = None
         
         return feedback
+
+    def calculate_score(self, attempts: int, hints_used: int, completion_time: float, word_length: int) -> int:
+        """Calculate score based on game performance."""
+        # Base score
+        base_score = 1000
+
+        # Word length bonus (longer words are harder)
+        length_bonus = (word_length - 3) * 50  # 50 points per letter above 3
+
+        # Attempt penalty (first attempt is free)
+        attempt_penalty = max(0, (attempts - 1) * 50)
+
+        # Hint penalty
+        hint_penalty = hints_used * 100
+
+        # Time bonus (bonus for completing under 60 seconds)
+        time_bonus = 0
+        if completion_time <= 60:
+            time_bonus = int((60 - completion_time) * 10)  # 10 points per second under 60
+
+        # Calculate final score
+        final_score = base_score + length_bonus + time_bonus - attempt_penalty - hint_penalty
+
+        # Ensure minimum score of 100
+        return max(100, final_score)
+
+    def get_game_completion_data(self, session_id: str) -> Dict:
+        """Get completion data for score calculation."""
+        session = self.get_session(session_id)
+        if not session:
+            return {}
+
+        completion_time = time.time() - session["start_time"]
+        word_length = len(session["word"])
+
+        return {
+            "word": session["word"],
+            "attempts": session["attempts"],
+            "hints_used": session["hints_used"],
+            "completion_time": completion_time,
+            "word_length": word_length,
+            "score": self.calculate_score(
+                session["attempts"],
+                session["hints_used"],
+                completion_time,
+                word_length
+            )
+        }
