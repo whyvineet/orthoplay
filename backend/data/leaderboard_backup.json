@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "username": "john_doe",
+      "word": "truculent",
+      "score": 1300,
+      "attempts": 1,
+      "hints_used": 0,
+      "completion_time": 42.719,
+      "timestamp": "2025-08-05T10:28:09.010132",
+      "word_length": 9
+    }
+  ],
+  "metadata": {
+    "created_at": "2025-08-05T09:51:11.048479",
+    "last_updated": "2025-08-05T10:28:09.014333",
+    "version": "1.0"
+  }
+}

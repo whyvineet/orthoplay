@@ -1,5 +1,5 @@
 {
-  "fetched_at": 1754323116.4918737,
+  "fetched_at": 1754367427.3370275,
   "data": [
     {
       "login": "whyvineet",
@@ -88,6 +88,28 @@
       "user_view_type": "public",
       "site_admin": false,
       "contributions": 2
+    },
+    {
+      "login": "hedauav",
+      "id": 176166976,
+      "node_id": "U_kgDOCoAYQA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/176166976?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hedauav",
+      "html_url": "https://github.com/hedauav",
+      "followers_url": "https://api.github.com/users/hedauav/followers",
+      "following_url": "https://api.github.com/users/hedauav/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hedauav/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hedauav/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hedauav/subscriptions",
+      "organizations_url": "https://api.github.com/users/hedauav/orgs",
+      "repos_url": "https://api.github.com/users/hedauav/repos",
+      "events_url": "https://api.github.com/users/hedauav/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hedauav/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false,
+      "contributions": 1
     },
     {
       "login": "ragingtitan",

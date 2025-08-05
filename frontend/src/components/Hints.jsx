@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Lightbulb } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContext";
 
-function Hints({ hints, numberOfHints, setNumberOfHints }) {
+function Hints({ hints, numberOfHints, setNumberOfHints, trackHintUsage }) {
   const [hint, setHint] = useState(null);
   const { darkMode } = useContext(ThemeContext);
 
@@ -43,7 +43,12 @@ function Hints({ hints, numberOfHints, setNumberOfHints }) {
         <button
           onClick={() => {
             setNumberOfHints((prev) => {
-              return prev + 1;
+              const newCount = prev + 1;
+              // Track hint usage in backend
+              if (trackHintUsage) {
+                trackHintUsage();
+              }
+              return newCount;
             });
           }}
           className={`px-6 py-3 mt-4 text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
