@@ -335,3 +335,35 @@ async def get_user_stats(username: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to get user stats: {str(e)}")
+
+
+
+@router.get("/app/stats")
+async def get_app_stats():
+    """Get application-wide statistics."""
+    try:
+        # Get total unique users from leaderboard
+        total_entries = leaderboard_service.get_total_entries()
+        unique_users = leaderboard_service.get_unique_users_count()
+
+        # Get total words available
+        word_service = GameService().word_service
+        total_words = len(word_service.words)
+
+        # Get total games played
+        total_games = leaderboard_service.get_total_games()
+
+        # Calculate community satisfaction (based on completion rate)
+        completion_stats = leaderboard_service.get_completion_stats()
+        community_love = completion_stats.get("satisfaction_rate", 95)
+
+        return {
+            "active_learners": unique_users,
+            "words_available": total_words,
+            "total_games_played": total_games,
+            "community_love": community_love,
+            "open_source": 100  # Always 100% as it's open source
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get app stats: {str(e)}")
