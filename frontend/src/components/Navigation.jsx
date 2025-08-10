@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { ThemeContext } from '../context/ThemeContext';
 
 const Navigation = ({ apiStatus }) => {
@@ -18,7 +18,7 @@ const Navigation = ({ apiStatus }) => {
     <nav className={`${darkMode ? 'bg-slate-900' : 'bg-white'} border-b ${darkMode ? 'border-slate-700' : 'border-gray-200'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-16">
-          
+
           {/* Logo */}
           <Link to={"/"} className="flex items-center">
             <img
@@ -44,11 +44,10 @@ const Navigation = ({ apiStatus }) => {
 
           {/* Right side - API Status & Theme Toggle */}
           <div className="hidden lg:flex items-center space-x-4">
-            <div className={`flex items-center text-sm px-3 py-1.5 rounded-full border ${
-              darkMode
+            <div className={`flex items-center text-sm px-3 py-1.5 rounded-full border ${darkMode
                 ? 'border-slate-600 bg-slate-800/50'
                 : 'border-gray-300 bg-gray-50'
-            }`}>
+              }`}>
               <span className={`mr-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>API Status:</span>
               <span className={`flex items-center font-medium ${apiStatus === "connected" ? "text-green-500" : "text-red-500"}`}>
                 <div className={`w-2 h-2 rounded-full mr-2 ${apiStatus === "connected" ? "bg-green-500" : "bg-red-500"}`}></div>
@@ -82,7 +81,7 @@ const Navigation = ({ apiStatus }) => {
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-md transition-colors duration-200 ${darkMode ? 'text-gray-400 hover:text-white hover:bg-slate-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'}`}
             >
-              <Menu size={16} />
+              {isOpen ? <X size={16} /> : <Menu size={16} />}
             </button>
           </div>
         </div>
@@ -101,11 +100,10 @@ const Navigation = ({ apiStatus }) => {
                   {navLink.text}
                 </Link>
               ))}
-              <div className={`flex items-center mx-3 my-2 px-3 py-1.5 text-sm rounded-full border ${
-                darkMode
+              <div className={`flex items-center mx-3 my-2 px-3 py-1.5 text-sm rounded-full border ${darkMode
                   ? 'border-slate-600 bg-slate-800/50 text-gray-400'
                   : 'border-gray-300 bg-gray-50 text-gray-500'
-              }`}>
+                }`}>
                 <span className="mr-2">API Status:</span>
                 <span className={`flex items-center font-medium ${apiStatus === "connected" ? "text-green-500" : "text-red-500"}`}>
                   <div className={`w-2 h-2 rounded-full mr-2 ${apiStatus === "connected" ? "bg-green-500" : "bg-red-500"}`}></div>
