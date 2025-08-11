@@ -76,7 +76,7 @@ async def health_check():
 async def start_game(request: GameStartRequest):
     """Start a new game session."""
     try:
-        game_data = game_service.start_game()
+        game_data = game_service.start_game(request.difficulty)
         word_data = game_data["word_data"]
         
         length_options = game_service.generate_length_options(len(game_data["word"]))
