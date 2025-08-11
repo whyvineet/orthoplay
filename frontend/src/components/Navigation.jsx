@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, CheckCircle, XCircle, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { ThemeContext } from '../context/ThemeContext';
 
 const Navigation = ({ apiStatus }) => {
@@ -8,29 +8,18 @@ const Navigation = ({ apiStatus }) => {
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   const navLinks = [
-    {
-      text: "How to Play",
-      redirectTo: "/how-to-play"
-    },
-    {
-      text: "Leaderboard",
-      redirectTo: "/leaderboard"
-    },
-    {
-      text: "About",
-      redirectTo: "/about"
-    },
-    {
-      text: "Our Contributors",
-      redirectTo: "/our-contributors"
-    }
+    { text: "How to Play", redirectTo: "/how-to-play" },
+    { text: "Leaderboard", redirectTo: "/leaderboard" },
+    { text: "About", redirectTo: "/about" },
+    { text: "Our Contributors", redirectTo: "/our-contributors" }
   ];
 
   return (
     <nav className={`${darkMode ? 'bg-slate-900' : 'bg-white'} border-b ${darkMode ? 'border-slate-700' : 'border-gray-200'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-16">
-          {/* logo */}
+
+          {/* Logo */}
           <Link to={"/"} className="flex items-center">
             <img
               src="/icon.png"
@@ -41,7 +30,7 @@ const Navigation = ({ apiStatus }) => {
           </Link>
 
           {/* Desktop Navigation - Center */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((navLink) => (
               <Link
                 key={navLink.text}
@@ -54,12 +43,11 @@ const Navigation = ({ apiStatus }) => {
           </div>
 
           {/* Right side - API Status & Theme Toggle */}
-          <div className="hidden md:flex items-center space-x-4">
-            <div className={`flex items-center text-sm px-3 py-1.5 rounded-full border ${
-              darkMode
+          <div className="hidden lg:flex items-center space-x-4">
+            <div className={`flex items-center text-sm px-3 py-1.5 rounded-full border ${darkMode
                 ? 'border-slate-600 bg-slate-800/50'
                 : 'border-gray-300 bg-gray-50'
-            }`}>
+              }`}>
               <span className={`mr-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>API Status:</span>
               <span className={`flex items-center font-medium ${apiStatus === "connected" ? "text-green-500" : "text-red-500"}`}>
                 <div className={`w-2 h-2 rounded-full mr-2 ${apiStatus === "connected" ? "bg-green-500" : "bg-red-500"}`}></div>
@@ -73,15 +61,12 @@ const Navigation = ({ apiStatus }) => {
               className={`p-2 rounded-md transition-colors duration-200 ${darkMode ? 'text-gray-400 hover:text-white hover:bg-slate-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'}`}
               aria-label="Toggle theme"
             >
-              {darkMode ? (
-                <Sun size={18} />
-              ) : (
-                <Moon size={18} />
-              )}
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           </div>
-          {/* Mobile navbar controls */}
-          <div className="md:hidden flex items-center gap-2">
+
+          {/* Mobile/Tablet navbar controls */}
+          <div className="lg:hidden flex items-center gap-2">
             {/* Theme Toggle Button - Mobile */}
             <button
               onClick={toggleTheme}
@@ -91,19 +76,19 @@ const Navigation = ({ apiStatus }) => {
               {darkMode ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
-            {/* Hamburger menu */}
+            {/* Hamburger Menu */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-md transition-colors duration-200 ${darkMode ? 'text-gray-400 hover:text-white hover:bg-slate-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'}`}
             >
-              <Menu size={16} />
+              {isOpen ? <X size={16} /> : <Menu size={16} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className={`md:hidden absolute top-full left-0 w-full shadow-lg z-50 ${darkMode ? 'bg-slate-900 border-t border-slate-700' : 'bg-white border-t border-gray-200'}`}>
+          <div className={`lg:hidden absolute top-full left-0 w-full shadow-lg z-50 ${darkMode ? 'bg-slate-900 border-t border-slate-700' : 'bg-white border-t border-gray-200'}`}>
             <div className="px-4 py-2 space-y-1">
               {navLinks.map((navLink) => (
                 <Link
@@ -115,11 +100,10 @@ const Navigation = ({ apiStatus }) => {
                   {navLink.text}
                 </Link>
               ))}
-              <div className={`flex items-center mx-3 my-2 px-3 py-1.5 text-sm rounded-full border ${
-                darkMode
+              <div className={`flex items-center mx-3 my-2 px-3 py-1.5 text-sm rounded-full border ${darkMode
                   ? 'border-slate-600 bg-slate-800/50 text-gray-400'
                   : 'border-gray-300 bg-gray-50 text-gray-500'
-              }`}>
+                }`}>
                 <span className="mr-2">API Status:</span>
                 <span className={`flex items-center font-medium ${apiStatus === "connected" ? "text-green-500" : "text-red-500"}`}>
                   <div className={`w-2 h-2 rounded-full mr-2 ${apiStatus === "connected" ? "bg-green-500" : "bg-red-500"}`}></div>
