@@ -7,6 +7,7 @@ from datetime import datetime
 
 class GameStartRequest(BaseModel):
     difficulty: Optional[str] = "medium"
+    mode: Optional[str] = "playing"
 
 
 class GameStartResponse(BaseModel):

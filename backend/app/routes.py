@@ -76,7 +76,8 @@ async def health_check():
 async def start_game(request: GameStartRequest):
     """Start a new game session."""
     try:
-        game_data = game_service.start_game()
+        mode = request.mode
+        game_data = game_service.start_game(mode=mode)
         word_data = game_data["word_data"]
         
         length_options = game_service.generate_length_options(len(game_data["word"]))
@@ -250,6 +251,9 @@ async def submit_score(request: SubmitScoreRequest):
         session = game_service.get_session(request.word_id)
         if not session:
             raise HTTPException(status_code=404, detail="Game session not found")
+        
+        if session.get("mode") == "demo":
+            raise HTTPException(status_code=400, detail="Demo games cannot submit scores")
 
         if not session.get("completed", False):
             raise HTTPException(status_code=400, detail="Game not completed yet")

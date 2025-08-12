@@ -1,10 +1,20 @@
 import React, { useContext } from 'react';
 import { Lightbulb, Volume2, SpellCheck, MousePointerClick, HelpCircle } from 'lucide-react';
 import { ThemeContext } from '../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
-const HowToPlay = () => {
+const HowToPlay = ({setGameState, startGame}) => {
     const { darkMode } = useContext(ThemeContext);
-    
+    const navigate = useNavigate()
+    const demoGame = async() => {
+        try {
+            await startGame("demo");
+            setGameState("demo");
+            navigate("/");
+        } catch (error) {
+            console.log("Failed to start demo game: ", error);
+        }
+    }
     const steps = [
         {
             icon: <MousePointerClick className={darkMode ? "text-blue-400" : "text-blue-600"} size={28} />,
@@ -100,6 +110,16 @@ const HowToPlay = () => {
                     ))}
                 </div>
 
+                <button
+                    onClick={demoGame}
+                    className={`inline-flex items-center justify-center px-8 py-4 text-white text-lg font-semibold rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-lg active:scale-95 min-w-48 group ${
+                        darkMode 
+                        ? "bg-blue-700 hover:bg-blue-600" 
+                        : "bg-blue-600 hover:bg-blue-700"
+                    }`}
+                    >
+                        Try Demo Round
+                    </button>
                 {/* Color Guide */}
                 <div>
                     <h3 className={`text-2xl font-bold mb-6 text-center transition-colors duration-300 hover:text-blue-600 ${
