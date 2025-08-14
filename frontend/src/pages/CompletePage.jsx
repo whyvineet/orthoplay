@@ -1,8 +1,10 @@
 import { Volume2, Trophy, Frown, ArrowRight } from 'lucide-react';
+import { RotateCcw, Home } from 'lucide-react';
 import { useState, useEffect, useContext } from 'react';
 import { ttsService } from '../services/ttsService.js';
 import { ThemeContext } from '../context/ThemeContext';
 import ScoreSubmission from '../components/ScoreSubmission';
+import { useNavigate } from 'react-router-dom';
 
 const CompletePage = ({
   isWinner,
@@ -18,6 +20,7 @@ const CompletePage = ({
   const [showScoreSubmission, setShowScoreSubmission] = useState(false);
   const [submissionComplete, setSubmissionComplete] = useState(false);
   const { darkMode } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setSpeechSupported(ttsService.isSupported);
@@ -52,6 +55,14 @@ const CompletePage = ({
 
   const handleSkipSubmission = () => {
     setShowScoreSubmission(false);
+  };
+
+  const handlePlayAgain = () => {
+    resetGame();
+  };
+
+  const handleGoHome = () => {
+    navigate('/');
   };
 
   const gameCompletionData = getGameCompletionData ? getGameCompletionData() : null;
@@ -150,6 +161,35 @@ const CompletePage = ({
               </p>
             </div>
 
+            {/* Navigation Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+              <button
+                onClick={handlePlayAgain}
+                className={`inline-flex items-center justify-center px-6 py-3 text-white font-semibold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md active:scale-95 group min-w-[140px] ${
+                  darkMode
+                    ? 'bg-green-700 hover:bg-green-600'
+                    : 'bg-green-600 hover:bg-green-700'
+                }`}
+                aria-label="Play another word game"
+              >
+                <RotateCcw className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:rotate-180" />
+                🔁 Play Again
+              </button>
+              
+              <button
+                onClick={handleGoHome}
+                className={`inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md active:scale-95 group min-w-[140px] border-2 ${
+                  darkMode
+                    ? 'bg-gray-700 hover:bg-gray-600 text-white border-gray-600 hover:border-gray-500'
+                    : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-300 hover:border-gray-400'
+                }`}
+                aria-label="Go back to homepage"
+              >
+                <Home className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:scale-110" />
+                🏠 Go Home
+              </button>
+            </div>
+
             {/* Score Submission Section */}
             {isWinner && !showScoreSubmission && !submissionComplete && gameCompletionData && (
               <div className="mb-6">
@@ -166,18 +206,6 @@ const CompletePage = ({
                 </button>
               </div>
             )}
-
-            <button
-              onClick={resetGame}
-              className={`inline-flex items-center justify-center px-8 py-4 text-white text-lg font-semibold rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-lg active:scale-95 group ${
-                darkMode
-                  ? 'bg-blue-700 hover:bg-blue-600'
-                  : 'bg-blue-600 hover:bg-blue-700'
-              }`}
-            >
-              <ArrowRight className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
-              Next Word
-            </button>
           </div>
 
           {/* Score Submission Modal */}
