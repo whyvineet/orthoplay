@@ -1,4 +1,4 @@
-import { AlertCircle, XCircle } from "lucide-react";
+import { AlertCircle, XCircle, RefreshCw } from "lucide-react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import AudioPlayer from "../components/AudioPlayer";
@@ -24,6 +24,7 @@ const GamePage = ({
   guessLength,
   submitSpelling,
   revealAnswer,
+  resetGame,
   errorMessage,
   setErrorMessage,
   setNumberOfHints,
@@ -49,7 +50,7 @@ const GamePage = ({
           <h1 className={`text-4xl font-bold mb-2 ${
             darkMode ? "text-gray-100" : "text-gray-900"
           }`}>Orthoplay</h1>
-          <div className="flex items-center justify-center text-sm">
+          <div className="flex items-center justify-center gap-4 text-sm">
             <span className={`px-3 py-1 rounded-full shadow-sm ${
               darkMode 
                 ? "bg-gray-800 text-gray-300" 
@@ -57,6 +58,21 @@ const GamePage = ({
             }`}>
               Attempts: {attempts}
             </span>
+            
+            {/* Play Again Button - Only show during spelling phase */}
+            {gamePhase === "spelling" && (
+              <button
+                onClick={resetGame}
+                className={`inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-xl hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-sm active:scale-95 group ${
+                  darkMode
+                    ? 'bg-blue-700 hover:bg-blue-600 text-white'
+                    : 'bg-blue-600 hover:bg-blue-700 text-white'
+                }`}
+              >
+                <RefreshCw className="h-4 w-4 mr-2 transition-transform duration-300 group-hover:rotate-180" />
+                🔁 Play Again
+              </button>
+            )}
           </div>
         </header>
 
@@ -124,6 +140,7 @@ const GamePage = ({
             <SpellingHistory
               spellingHistory={spellingHistory}
               lastMessage={lastMessage}
+              resetGame={resetGame}
             />
           )}
 

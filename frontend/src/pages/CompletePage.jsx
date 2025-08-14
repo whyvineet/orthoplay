@@ -1,4 +1,4 @@
-import { Volume2, Trophy, Frown, ArrowRight } from 'lucide-react';
+import { Volume2, Trophy, Frown, ArrowRight, RefreshCw, Home } from 'lucide-react';
 import { useState, useEffect, useContext } from 'react';
 import { ttsService } from '../services/ttsService.js';
 import { ThemeContext } from '../context/ThemeContext';
@@ -11,6 +11,7 @@ const CompletePage = ({
   attempts,
   numberOfHints,
   resetGame,
+  resetGameWithSameWord,
   getGameCompletionData,
 }) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -167,17 +168,23 @@ const CompletePage = ({
               </div>
             )}
 
-            <button
-              onClick={resetGame}
-              className={`inline-flex items-center justify-center px-8 py-4 text-white text-lg font-semibold rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-lg active:scale-95 group ${
-                darkMode
-                  ? 'bg-blue-700 hover:bg-blue-600'
-                  : 'bg-blue-600 hover:bg-blue-700'
-              }`}
-            >
-              <ArrowRight className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
-              Next Word
-            </button>
+            {/* Action Buttons Section */}
+            <div className="mt-8">
+              {/* Go Home Button */}
+              <div className="flex justify-center">
+                <button
+                  onClick={() => window.location.href = '/'}
+                  className={`inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-2xl hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md active:scale-95 group min-w-[200px] ${
+                    darkMode
+                      ? 'bg-gray-700 hover:bg-gray-600 text-white'
+                      : 'bg-gray-200 hover:bg-gray-300 text-gray-800'
+                  }`}
+                >
+                  <Home className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:scale-110" />
+                  🏠 Go Home
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Score Submission Modal */}
