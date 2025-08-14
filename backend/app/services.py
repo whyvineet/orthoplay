@@ -36,18 +36,19 @@ class GameService:
         self.word_service = WordService()
         self.game_sessions = {}
 
-    def start_game(self) -> Dict:
+    def start_game(self, mode="playing") -> Dict:
         """Start a new game session."""
         word = self.word_service.get_random_word()
         session_id = f"game_{random.randint(1000, 9999)}"
 
-        self.game_sessions[session_id] = {
-            "word": word,
-            "attempts": 0,
-            "completed": False,
-            "hints_used": 0,
-            "start_time": time.time()
-        }
+        if mode == "playing":
+            self.game_sessions[session_id] = {
+                "word": word,
+                "attempts": 0,
+                "completed": False,
+                "hints_used": 0,
+                "start_time": time.time()
+            }
 
         return {
             "session_id": session_id,
