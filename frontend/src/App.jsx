@@ -21,7 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './context/ThemeContext';
 
 const App = () => {
-  const [gameState, setGameState] = useState("start"); // 'start', 'playing', 'complete'
+  const [gameState, setGameState] = useState("start"); // 'start', 'playing', 'complete', 'demo'
   const [gamePhase, setGamePhase] = useState("length"); // 'length', 'spelling'
   const [isLoading, setIsLoading] = useState(false);
   const [currentGame, setCurrentGame] = useState({
@@ -47,6 +47,7 @@ const App = () => {
   const [apiStatus, setApiStatus] = useState("unknown");
   const [errorMessage, setErrorMessage] = useState("");
   const [wordLength, setWordLength] = useState(0);
+  const [lastGameMode, setLastGameMode] = useState(null); // "demo" or "playing"
 
   const correctAudio = new Audio("/sounds/correct.mp3");
 
@@ -69,12 +70,13 @@ const App = () => {
     setTimeout(() => setErrorMessage(""), 10000);
   };
 
-  const startGame = async () => {
+  const startGame = async (mode = "playing") => {
     setIsLoading(true);
     setErrorMessage("");
 
     try {
-      const data = await apiService.startGame();
+      const data = await apiService.startGame("medium", mode);
+
       setCurrentGame({
         wordId: data.word_id,
         word: data.word,
@@ -85,10 +87,16 @@ const App = () => {
         hint3: data.hint3,
       });
 
-      setGameState("playing");
+      setLastGameMode(mode);
       setGamePhase("length");
       setGameStartTime(Date.now());
       resetGameData();
+
+      if (mode === "demo") {
+        setGameState("demo");
+      } else {
+        setGameState("playing");
+      }
     } catch (error) {
       console.error("Error starting game:", error);
       showError(`Failed to start game: ${error.message}`);
@@ -287,7 +295,7 @@ const App = () => {
         <main style={{ backgroundColor: 'var(--background-color)', minHeight: '100vh' }}>
           <Routes>
             <Route path="/our-contributors" element={<ContributorsPage />} />
-            <Route path="/how-to-play" element={<HowToPlay />} />
+            <Route path="/how-to-play" element={<HowToPlay setGameState={setGameState} startGame={startGame} />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/leaderboard" element={<LeaderboardPage />} />
             <Route
@@ -295,10 +303,10 @@ const App = () => {
               element={
                 gameState === "start" ? (
                   <StartPage {...gameProps} />
-                ) : gameState === "playing" ? (
-                  <GamePage {...gameProps} />
+                ) : gameState === "playing" || gameState === "demo" ? (
+                  <GamePage {...gameProps} gameState={gameState} />
                 ) : gameState === "complete" ? (
-                  <CompletePage {...gameProps} />
+                  <CompletePage {...gameProps} lastGameMode={lastGameMode} />
                 ) : null
               }
             />
