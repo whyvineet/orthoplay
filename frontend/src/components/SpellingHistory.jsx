@@ -1,6 +1,10 @@
-import { Target } from 'lucide-react';
+import { Target, RefreshCw } from 'lucide-react';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
-const SpellingHistory = ({ spellingHistory, lastMessage }) => {
+const SpellingHistory = ({ spellingHistory, lastMessage, resetGame }) => {
+    const { darkMode } = useContext(ThemeContext);
+    
     const getEmojiForFeedback = (emoji) => {
         if (emoji === '🟩') return 'correct';
         if (emoji === '🟨') return 'present';
@@ -49,6 +53,23 @@ const SpellingHistory = ({ spellingHistory, lastMessage }) => {
             {lastMessage && (
                 <div className="mt-6 p-4 bg-blue-50 rounded-xl">
                     <p className="text-blue-800 text-sm font-medium text-center">{lastMessage}</p>
+                </div>
+            )}
+            
+            {/* Play Again Button */}
+            {resetGame && (
+                <div className="mt-6 flex justify-center">
+                    <button
+                        onClick={resetGame}
+                        className={`inline-flex items-center justify-center px-6 py-3 text-sm font-semibold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md active:scale-95 group ${
+                            darkMode
+                                ? 'bg-blue-700 hover:bg-blue-600 text-white'
+                                : 'bg-blue-600 hover:bg-blue-700 text-white'
+                        }`}
+                    >
+                        <RefreshCw className="h-4 w-4 mr-2 transition-transform duration-300 group-hover:rotate-180" />
+                        🔁 Play Again
+                    </button>
                 </div>
             )}
         </div>

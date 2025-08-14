@@ -1,8 +1,9 @@
-import { Volume2, Trophy, Frown, ArrowRight } from 'lucide-react';
+import { Volume2, Trophy, Frown, Home } from 'lucide-react';
 import { useState, useEffect, useContext } from 'react';
 import { ttsService } from '../services/ttsService.js';
 import { ThemeContext } from '../context/ThemeContext';
 import ScoreSubmission from '../components/ScoreSubmission';
+import { useNavigate } from 'react-router-dom';
 
 const CompletePage = ({
   isWinner,
@@ -11,6 +12,7 @@ const CompletePage = ({
   attempts,
   numberOfHints,
   resetGame,
+  resetGameWithSameWord,
   getGameCompletionData,
   lastGameMode,
 }) => {
@@ -19,6 +21,7 @@ const CompletePage = ({
   const [showScoreSubmission, setShowScoreSubmission] = useState(false);
   const [submissionComplete, setSubmissionComplete] = useState(false);
   const { darkMode } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setSpeechSupported(ttsService.isSupported);
@@ -53,6 +56,14 @@ const CompletePage = ({
 
   const handleSkipSubmission = () => {
     setShowScoreSubmission(false);
+  };
+
+  const handlePlayAgain = () => {
+    resetGame();
+  };
+
+  const handleGoHome = () => {
+    navigate('/');
   };
 
   const gameCompletionData = getGameCompletionData ? getGameCompletionData() : null;
@@ -186,7 +197,24 @@ const CompletePage = ({
                       </button>
                     </div>
                   )}
-
+                  
+     feature/add-play-again-buttons
+            {/* Navigation Buttons - Only Go Home */}
+            <div className="flex justify-center mb-6">
+              <button
+                onClick={handleGoHome}
+                className={`inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md active:scale-95 group min-w-[140px] border-2 ${
+                  darkMode
+                    ? 'bg-gray-700 hover:bg-gray-600 text-white border-gray-600 hover:border-gray-500'
+                    : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-300 hover:border-gray-400'
+                }`}
+                aria-label="Go back to homepage"
+              >
+                <Home className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:scale-110" />
+                🏠 Go Home
+              </button>
+            </div>
+=
                   <button
                     onClick={resetGame}
                     className={`inline-flex items-center justify-center px-8 py-4 text-white text-lg font-semibold rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-lg active:scale-95 group ${
@@ -201,6 +229,7 @@ const CompletePage = ({
                 </>
               )}
 
+   main
           </div>
 
           {/* Score Submission Modal */}

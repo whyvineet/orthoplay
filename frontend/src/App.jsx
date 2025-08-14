@@ -205,6 +205,13 @@ const App = () => {
     resetCurrentGame();
   };
 
+  const resetGameWithSameWord = () => {
+    setGameState("playing");
+    setGamePhase("length");
+    resetGameData();
+    // Don't reset currentGame to keep the same word
+  };
+
   const resetGameData = () => {
     setLengthFeedback(null);
     setCurrentGuess("");
@@ -256,6 +263,7 @@ const App = () => {
     gameState,
     gamePhase,
     isLoading,
+    resetGameWithSameWord,
     currentGame,
     lengthFeedback,
     currentGuess,
